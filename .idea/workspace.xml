@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a1b5bf9-a335-4706-bc22-f51466b8dfc3" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/xiaoP.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/复习与热身/Hi.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/复习与热身/一个简单的例子.py" afterDir="false" />
+    <list default="true" id="1a1b5bf9-a335-4706-bc22-f51466b8dfc3" name="更改" comment="06051533">
+      <change afterPath="$PROJECT_DIR$/复习与热身/HI.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/复习与热身/小P的超级记事本/笔记.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,14 +17,26 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "GunGig"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/GunGig/XiaoP.git",
+    "accountId": "30c40092-96a0-4a1b-8e15-0057da907652"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 6
 }]]></component>
@@ -69,8 +76,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749107943590</updated>
-      <workItem from="1749107944716" duration="878000" />
+      <workItem from="1749107944716" duration="2877000" />
     </task>
+    <task id="LOCAL-00001" summary="06051533">
+      <option name="closed" value="true" />
+      <created>1749108842012</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749108842012</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -86,5 +102,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="06051533" />
+    <option name="LAST_COMMIT_MESSAGE" value="06051533" />
   </component>
 </project>

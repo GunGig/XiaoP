@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小P的“超级记事本” - 课程指南</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+            background-color: #e9f5e9; /* Light green background */
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3, h4 {
+            color: #006400; /* Dark Green */
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 3px solid #32cd32; /* Lime Green */
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin-top: 40px;
+            border-left: 6px solid #32cd32;
+            padding-left: 15px;
+            background-color: #f0fff0; /* Honeydew */
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 0 5px 5px 0;
+        }
+        h3 {
+            margin-top: 25px;
+            color: #2e8b57; /* Sea Green */
+        }
+        .task-block {
+            background-color: #f5f5f5; /* Light grey */
+            border: 1px solid #dcdcdc; /* Gainsboro */
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .code-example {
+            background-color: #282c34; /* Dark background for code */
+            color: #abb2bf; /* Light text for code */
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+        }
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap; /* Wrap long lines */
+            word-break: break-all;
+        }
+        .knowledge-point {
+            background-color: #fffacd; /* Lemon Chiffon */
+            border-left: 5px solid #ffd700; /* Gold */
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        .important-note {
+            background-color: #ffe4e1; /* Misty Rose */
+            border-left: 5px solid #ff6347; /* Tomato Red */
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        ul {
+            list-style-type: "📝 "; /* Pencil emoji */
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .interactive-question {
+            background-color: #e0ffff; /* Light Cyan */
+            padding: 10px;
+            border-left: 5px solid #00ced1; /* Dark Turquoise */
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .summary {
+            background-color: #f0f8ff; /* Alice Blue */
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 2px dashed #4682b4; /* Steel Blue */
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📖 小P的“超级记事本” - 课程指南 (第1-2周) 📖</h1>
+        <p>欢迎同学们！在这几节课中，我们要给小P增加一个非常实用的新功能——“超级记事本”。它将学会如何帮我们记录重要的事情，并能随时把它们读出来。让我们开始吧！</p>
+
+        <h2>第一课时：让小P学会“写”日记 (写入文件)</h2>
+
+        <div class="task-block">
+            <h3>任务1：第一次尝试“记录”——小P的第一行日记</h3>
+            <p><strong>目标：</strong>让小P将一句话（比如“今天天气真好！”）写入到一个新的文本文件中，我们给这个文件取名叫 `memos.txt`。</p>
+            <p><strong>正确做法：</strong></p>
+            <div class="code-example">
+<pre>
+# 1. 打开文件 (如果不存在则创建，如果存在则清空内容后写入)
+file = open("memos.txt", "w", encoding="utf-8")
+# "w" 代表写入模式 (write)
+# encoding="utf-8" 确保中文字符能正确保存
+
+# 2. 写入内容
+file.write("今天天气真好！")
+
+# 3. 关闭文件 (非常重要！确保内容真正保存到磁盘)
+file.close()
+
+print("小P已经把第一行日记写好啦！去看看 memos.txt 文件吧！")
+</pre>
+            </div>
+            <div class="knowledge-point">
+                <h4>💡 应用到的知识点：</h4>
+                <ul>
+                    <li><strong><code>open(filename, mode, encoding)</code> 函数：</strong>
+                        <ul>
+                            <li><code>filename</code>: 文件的名字，比如 "memos.txt"。</li>
+                            <li><code>mode</code>: 打开文件的模式。<code>"w"</code> (write) 表示写入模式。如果文件已存在，它会先清空文件内容再写入新内容；如果文件不存在，它会创建一个新文件。</li>
+                            <li><code>encoding="utf-8"</code>: 指定文件的编码方式，这对于正确保存和读取包含中文字符的文本非常重要。</li>
+                        </ul>
+                    </li>
+                    <li><strong>文件对象的 <code>write(text)</code> 方法：</strong> 将指定的文本 `text` 写入到已打开的文件中。</li>
+                    <li><strong>文件对象的 <code>close()</code> 方法：</strong> 关闭文件。这是一个好习惯，能确保所有写入的数据都被刷新到磁盘上，并释放文件资源。</li>
+                </ul>
+            </div>
+            <div class="interactive-question">
+                <strong>🤔 思考一下：</strong> 如果你再次运行上面的代码，但是把 `file.write()` 里面的内容改成 "今天我学会了写文件！"，`memos.txt` 文件的内容会变成什么样？为什么？
+                <br><em>(提示：注意 "w" 模式的特性！)</em>
+            </div>
+        </div>
+
+        <div class="task-block">
+            <h3>任务2：让小P“追加”记录——日记越写越多</h3>
+            <p><strong>目标：</strong> 我们不希望每次都覆盖掉小P以前写的日记。现在，让小P学会向 `memos.txt` 文件末尾添加新的内容，而不是覆盖旧的。</p>
+            <p><strong>正确做法：</strong></p>
+            <div class="code-example">
+<pre>
+# 1. 获取用户想记录的内容
+memo_to_add = input("小P，这次你想记下什么？")
+
+# 2. 打开文件 (追加模式)
+file = open("memos.txt", "a", encoding="utf-8")
+# "a" 代表追加模式 (append)
+
+# 3. 写入新内容，并在末尾加上换行符 \n
+file.write(memo_to_add + "\n") # "\n" 让每条记录占一行
+
+# 4. 关闭文件
+file.close()
+
+print("小P又补充了一条日记！")
+</pre>
+            </div>
+            <div class="knowledge-point">
+                <h4>💡 应用到的知识点：</h4>
+                <ul>
+                    <li><strong>文件模式 <code>"a"</code> (append)：</strong> 当以追加模式打开文件时，如果文件存在，新的内容会被添加到文件的末尾，原有内容保留。如果文件不存在，会创建一个新文件。</li>
+                    <li><strong>换行符 <code>\n</code>：</strong> 这是一个特殊的字符，代表“换一行”。在文本文件中，它能让每条记录显示在不同行，使内容更清晰易读。</li>
+                    <li><strong><code>input()</code> 函数：</strong> 用来获取用户从键盘输入的内容。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="task-block">
+            <h3>任务3：更安全优雅地操作文件——认识 <code>with</code> 语句</h3>
+            <p><strong>目标：</strong> 学习使用 <code>with open(...) as ...:</code> 结构。这种方式更安全，因为它能确保文件在使用完毕后被自动关闭，即使程序发生错误也不会忘记关闭文件。</p>
+            <p><strong>正确做法：</strong></p>
+            <div class="code-example">
+<pre>
+memo_to_add = input("小P (使用 with 语句)，你想记下什么？")
+
+# 使用 with 语句打开文件
+with open("memos.txt", "a", encoding="utf-8") as file:
+    file.write(memo_to_add + "\n")
+# 当代码块结束时 (离开 with 语句)，文件会自动关闭，不需要 file.close()
+
+print("小P用更高级的方法记好了！")
+</pre>
+            </div>
+            <div class="knowledge-point">
+                <h4>💡 应用到的知识点：</h4>
+                <ul>
+                    <li><strong><code>with open(...) as file_variable:</code> 语句：</strong>
+                        <ul>
+                            <li>这是一种上下文管理协议，它简化了资源管理（如文件操作）。</li>
+                            <li><code>as file_variable</code>: 将打开的文件对象赋值给一个变量 (这里是 `file`)，在 `with` 代码块内部可以使用这个变量来操作文件。</li>
+                            <li><strong>自动关闭：</strong> 当 `with` 代码块执行完毕或发生任何错误退出时，Python 会自动调用文件对象的 `close()` 方法。这使得代码更简洁，也更不容易出错（比如忘记关闭文件）。</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="important-note">强烈推荐使用 <code>with</code> 语句来处理文件操作！</p>
+            </div>
+        </div>
+
+        <div class="task-block">
+            <h3>任务4：封装“添加备忘”功能——小P的专属技能</h3>
+            <p><strong>目标：</strong> 将添加备忘录的代码封装成一个 Python 函数，比如叫做 `add_memo(memo_text)`。这样，我们想让小P记录东西时，只需要调用这个函数就行了。</p>
+            <p><strong>正确做法：</strong></p>
+            <div class="code-example">
+<pre>
+# 定义 "添加备忘" 函数
+def add_memo(memo_text):
+    """这个函数会把传入的 memo_text 追加到 memos.txt 文件中。"""
+    with open("memos.txt", "a", encoding="utf-8") as file:
+        file.write(memo_text + "\n")
+    print(f"小P已记下：'{memo_text}'")
+
+# 测试我们的新函数
+my_new_note = input("告诉小P要记什么：")
+add_memo(my_new_note)
+
+add_memo("明天要完成Python作业！") # 直接调用函数记录
+add_memo("记得给小P升级！")
+</pre>
+            </div>
+            <div class="knowledge-point">
+                <h4>💡 应用到的知识点：</h4>
+                <ul>
+                    <li><strong>函数定义 <code>def function_name(parameters):</code>：</strong>
+                        <ul>
+                            <li><code>def</code> 是定义函数的关键字。</li>
+                            <li><code>function_name</code> 是你给函数取的名字 (如 `add_memo`)。</li>
+                            <li><code>parameters</code> 是函数可以接收的输入值 (如 `memo_text`)。</li>
+                            <li>函数体内的代码是这个函数要执行的操作。</li>
+                        </ul>
+                    </li>
+                    <li><strong>函数调用：</strong> 使用函数名加上括号，并传入必要的参数来执行函数，例如 `add_memo("你好")`。</li>
+                    <li><strong>代码复用和模块化：</strong> 函数让我们可以把一段常用的代码打包起来，需要用的时候直接调用，避免重复编写相同的代码，也让程序结构更清晰。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="summary">
+            <h3>第一课时小结 ✨</h3>
+            <p>太棒了！在这一课时，我们的小P：</p>
+            <ul>
+                <li>学会了使用 <code>open()</code> 打开文件。</li>
+                <li>掌握了 <code>"w"</code> (写入) 和 <code>"a"</code> (追加) 两种文件模式。</li>
+                <li>知道了 <code>\n</code> 换行符的作用。</li>
+                <li>学会了使用更安全的 <code>with</code> 语句来操作文件。</li>
+                <li>通过 <code>def</code> 定义了第一个文件操作函数 <code>add_memo()</code>！</li>
+            </ul>
+            <p>小P现在已经具备了“写”日记的能力！下一课时，我们将教它如何“读”出这些日记。</p>
+        </div>
+
+        <h2>第二课时：让小P学会“读”日记 (读取文件与整合)</h2>
+
+        <div class="task-block">
+            <h3>任务5：让小P“朗读”所有记录——看看都记了啥</h3>
+            <p><strong>目标：</strong> 从 `memos.txt` 文件中读取所有已记录的内容，并把它们打印到屏幕上。</p>
+            <p><strong>正确做法 (方法一：一次性读取全部)：</strong></p>
+            <div class="code-example">
+<pre>
+# 使用 "r" (read) 模式打开文件
+try: #尝试执行，因为文件可能不存在
+    with open("memos.txt", "r", encoding="utf-8") as file:
+        all_memos = file.read() # 一次性读取文件所有内容为一个字符串
+        print("--- 小P的备忘录 (全部内容) ---")
+        if all_memos:
+            print(all_memos)
+        else:
+            print("记事本还是空的哦！")
+except FileNotFoundError:
+    print("小P还没有日记本 (memos.txt 文件不存在)！")
+</pre>
+            </div>
+            <p><strong>正确做法 (方法二：逐行读取)：</strong> 这种方法更适合我们逐条处理备忘。</p>
+            <div class="code-example">
+<pre>
+try:
+    with open("memos.txt", "r", encoding="utf-8") as file:
+        memo_lines = file.readlines() # 读取所有行，返回一个列表，每行是列表中的一个元素
+        print("--- 小P的备忘录 (逐条显示) ---")
+        if not memo_lines: # 检查列表是否为空
+            print("记事本还是空的哦！")
+        else:
+            for line in memo_lines:
+                print(line.strip()) # .strip() 去掉每行末尾的换行符 \n 和其他首尾空白
+except FileNotFoundError:
+    print("小P还没有日记本 (memos.txt 文件不存在)！")
+</pre>
+            </div>
+            <div class="knowledge-point">
+                <h4>💡 应用到的知识点：</h4>
+                <ul>
+                    <li><strong>文件模式 <code>"r"</code> (read)：</strong> 以只读模式打开文件。如果文件不存在，会抛出 `FileNotFoundError` 错误。</li>
+                    <li><strong>文件对象的 <code>read()</code> 方法：</strong> 读取整个文件的内容，并将其作为一个字符串返回。</li>
+                    <li><strong>文件对象的 <code>readlines()</code> 方法：</strong> 读取文件的所有行，并将每一行作为一个字符串元素存储在一个列表中返回。每行末尾通常会包含换行符 `\n`。</li>
+                    <li><strong>字符串的 <code>strip()</code> 方法：</strong> 移除字符串开头和结尾的空白字符（包括空格、制表符、换行符等）。这在处理从文件中读取的行时非常有用，可以去掉不必要的换行。</li>
+                    <li><strong><code>try-except FileNotFoundError:</code>：</strong> 错误处理机制。<code>try</code> 块中的代码如果引发了 <code>FileNotFoundError</code>（比如尝试读取一个不存在的文件），程序不会崩溃，而是会执行 <code>except</code> 块中的代码。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="task-block">
+            <h3>任务6：封装“查看备忘”功能——小P的查阅技能</h3>
+            <p><strong>目标：</strong> 将查看备忘录的代码封装成一个函数 `view_memos()`。</p>
+            <p><strong>正确做法：</strong></p>
+            <div class="code-example">
+<pre>
+def view_memos():
+    """这个函数会读取并显示 memos.txt 文件中的所有备忘。"""
+    try:
+        with open("memos.txt", "r", encoding="utf-8") as file:
+            memo_list = file.readlines()
+
+        if not memo_list:
+            print("小P的记事本还是空的哦！")
+        else:
+            print("\n--- 小P的备忘录 ---")
+            # enumerate 可以让我们在遍历列表时同时获得索引和元素
+            for index, memo in enumerate(memo_list):
+                # index 从 0 开始，所以我们显示时用 index + 1
+                print(f"{index + 1}. {memo.strip()}")
+            print("--------------------")
+
+    except FileNotFoundError:
+        print("小P还没有开始写日记呢，记事本 (memos.txt) 不存在！")
+
+# 测试查看函数
+view_memos()
+</pre>
+            </div>
+            <div class="knowledge-point">
+                <h4>💡 应用到的知识点：</h4>
+                <ul>
+                    <li><strong><code>enumerate(iterable)</code> 函数：</strong> 在遍历一个可迭代对象（如列表）时，<code>enumerate</code> 会返回一个包含索引和对应元素的元组。这对于需要显示项目编号的场景非常方便。</li>
+                    <li><strong>列表操作：</strong> <code>readlines()</code> 返回的是一个列表，我们可以用 `for` 循环遍历它。</li>
+                    <li><strong>条件判断 `if not memo_list:`：</strong> 检查列表是否为空。一个空列表在布尔上下文中被视为 `False`。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="task-block">
+            <h3>任务7：整合！小P的交互式记事本——让小P动起来</h3>
+            <p><strong>目标：</strong> 现在我们有了 `add_memo()` 和 `view_memos()` 两个函数。让我们把它们整合到一个主程序中，通过一个循环让用户可以选择是“添加备忘”还是“查看备忘”，或者“退出”程序。</p>
+            <p><strong>正确做法：</strong></p>
+            <div class="code-example">
+<pre>
+# (假设 add_memo 和 view_memos 函数已经定义好了，就像上面那样)
+
+MEMO_FILE = "memos.txt" # 定义一个常量来存储文件名，方便管理
+
+def add_memo(memo_text):
+    """将传入的 memo_text 追加到 MEMO_FILE 文件中。"""
+    with open(MEMO_FILE, "a", encoding="utf-8") as file:
+        file.write(memo_text + "\n")
+    print(f"小P已记下：'{memo_text}'")
+
+def view_memos():
+    """读取并显示 MEMO_FILE 文件中的所有备忘。"""
+    try:
+        with open(MEMO_FILE, "r", encoding="utf-8") as file:
+            memo_list = file.readlines()
+        if not memo_list:
+            print("小P的记事本还是空的哦！")
+        else:
+            print("\n--- 小P的备忘录 ---")
+            for index, memo in enumerate(memo_list):
+                print(f"{index + 1}. {memo.strip()}")
+            print("--------------------")
+    except FileNotFoundError:
+        print(f"小P还没有开始写日记呢，记事本 ({MEMO_FILE}) 不存在！")
+
+# 主程序循环
+while True:
+    print("\n小P记事本为你服务：")
+    print("1. 添加新的备忘")
+    print("2. 查看所有备忘")
+    print("3. 退出记事本")
+
+    choice = input("请输入你的选择 (1/2/3): ")
+
+    if choice == '1':
+        new_note = input("请输入要记录的内容：")
+        add_memo(new_note)
+    elif choice == '2':
+        view_memos()
+    elif choice == '3':
+        print("感谢使用小P记事本，下次再见！")
+        break # 跳出 while 循环，结束程序
+    else:
+        print("无效的选择，请输入数字 1, 2 或 3。")
+</pre>
+            </div>
+            <div class="knowledge-point">
+                <h4>💡 应用到的知识点：</h4>
+                <ul>
+                    <li><strong><code>while True:</code> 无限循环：</strong> 创建一个会一直运行的循环，直到遇到 `break` 语句。</li>
+                    <li><strong><code>input()</code> 获取用户选择。</strong></li>
+                    <li><strong><code>if/elif/else</code> 条件判断：</strong> 根据用户的输入执行不同的操作。</li>
+                    <li><strong><code>break</code> 语句：</strong> 用于跳出当前所在的循环。在这里，当用户选择退出时，我们用 `break` 来结束 `while True` 循环。</li>
+                    <li><strong>常量 (Convention):</strong> 将文件名如 `"memos.txt"` 存为一个大写变量 `MEMO_FILE` 是一种常见的编程约定，表示这个值不应轻易改变，并且方便在多处使用和统一修改。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="summary">
+            <h3>第二课时与模块总结 🎉</h3>
+            <p>恭喜你！通过这两个课时的学习，我们的小P：</p>
+            <ul>
+                <li>学会了使用 <code>"r"</code> (读取) 模式打开文件。</li>
+                <li>掌握了 <code>read()</code> 和 <code>readlines()</code> 两种读取文件内容的方法。</li>
+                <li>学会了使用 <code>strip()</code> 清理字符串。</li>
+                <li>通过 <code>def</code> 定义了 <code>view_memos()</code> 函数来展示记录。</li>
+                <li>成功地将添加和查看功能整合到了一个交互式的程序中！</li>
+            </ul>
+            <p><strong>小P现在是一个真正有用的“小秘书”了，它能帮我们“记住”东西了！</strong> 这是不是很酷？我们还了解了文件、文件夹、路径这些基本概念，以及文本文件是如何存储信息的。</p>
+            <p><strong>思考与展望：</strong> 我们的记事本还能怎么改进呢？比如：</p>
+            <ul>
+                <li>删除某条记录？</li>
+                <li>修改某条记录？</li>
+                <li>给记录加上日期？</li>
+            </ul>
+            <p>这些都是我们未来可以探索的方向！继续加油！</p>
+        </div>
+
+    </div>
+</body>
+</html>
