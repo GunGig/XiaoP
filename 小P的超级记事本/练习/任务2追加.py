@@ -2,7 +2,7 @@
 memo_to_add = input("小P，这次你想记下什么？")
 
 # 2. 打开文件 (追加模式)
-file = open("memos.txt", ？？, encoding="utf-8")
+file = open("memos.txt",'a', encoding="utf-8")
 # "a" 代表追加模式 (append)
 
 # 3. 写入新内容，并在末尾加上换行符 \n

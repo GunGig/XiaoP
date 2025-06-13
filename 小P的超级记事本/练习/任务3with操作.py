@@ -1,7 +1,7 @@
 memo_to_add = input("小P (使用 with 语句)，你想记下什么？")
 
 # 使用 with 语句打开文件
-？ open("memos.txt", "a", encoding="utf-8") ？ file:
+with open("memos.txt", "a", encoding="utf-8") as file:
     file.write(memo_to_add + "\n")
 # 当代码块结束时 (离开 with 语句)，文件会自动关闭，不需要 file.close()
 

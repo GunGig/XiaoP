@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小P的字符串魔法学院 - 格式化输出大闯关</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f8ff; /* AliceBlue */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1, h2, h3 {
+            color: #007bff; /* Primary Blue */
+            text-align: center;
+        }
+        h1 {
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .level {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: #f9f9f9;
+        }
+        .level-title {
+            font-size: 1.8em;
+            color: #28a745; /* Success Green */
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: left;
+            border-left: 5px solid #28a745;
+            padding-left: 10px;
+        }
+        .knowledge-point {
+            background-color: #e9ecef; /* Light Gray */
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .knowledge-point strong {
+            color: #dc3545; /* Danger Red for emphasis */
+        }
+        .code-example {
+            background-color: #282c34; /* Dark background for code */
+            color: #abb2bf; /* Light text for code */
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        .code-example pre { margin: 0; }
+        .quiz-section {
+            margin-top: 20px;
+        }
+        /* Styles for individual question container */
+        .current-question-area {
+            background-color: #fff3cd; /* Light Yellow */
+            padding: 20px;
+            border: 1px dashed #ffeeba;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .question-text { 
+            font-weight: bold;
+            margin-top: 0; 
+            margin-bottom: 15px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            background-color: #fff;
+            border: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .options label:hover {
+            background-color: #f8f9fa;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .feedback-area {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .feedback-area .result.correct { color: green; font-weight: bold; }
+        .feedback-area .result.incorrect { color: red; font-weight: bold; }
+        .feedback-area .explanation { 
+            margin-top: 10px; 
+            padding: 10px;
+            background-color: #e2e3e5;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .navigation-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .navigation-buttons button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+        .navigation-buttons button:hover {
+            background-color: #0056b3;
+        }
+        .navigation-buttons button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .hidden {
+            display: none !important; /* Use !important to ensure override */
+        }
+        .level-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .intro-text { text-align: center; margin-bottom: 20px; font-size: 1.1em; }
+        .emoji { font-size: 1.2em; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1><span class="emoji">✨</span>小P的字符串魔法学院 - 格式化输出大闯关<span class="emoji">✨</span></h1>
+        <p class="intro-text">欢迎来到字符串魔法学院！我是小P院长。在这里，你将通过闯关的方式，学习Python中超酷的字符串格式化魔法，让你的文字表达更灵活、更强大！准备好了吗？让我们开始第一关的挑战吧！</p>
+    </div>
+
+    <!-- 关卡 1: f-string 基础 -->
+    <div class="container level" id="level1">
+        <h2 class="level-title"><span class="emoji">🚩</span>第一关：f-string 初体验 - 神奇的占位符</h2>
+        
+        <div class="knowledge-point">
+            <p><strong>知识点1：什么是 f-string？</strong></p>
+            <p>想象一下，你想说：“我的名字是[你的名字]，我喜欢[你喜欢的水果]。” 如果每次都要用 <code>+</code> 号把文字和变量拼起来，会很麻烦对不对？</p>
+            <p>f-string (Formatted String Literals，格式化字符串字面值) 就是来解决这个问题的！它让我们可以把变量轻松地“嵌入”到字符串中。</p>
+            <p><strong>怎么用？</strong> 超简单！</p>
+            <ol>
+                <li>在字符串的第一个引号前加上一个小写字母 <code>f</code>。</li>
+                <li>在字符串中，你想放入变量值的地方，用花括号 <code>{}</code> 把变量名包起来。</li>
+            </ol>
+        </div>
+
+        <div class="code-example">
+<pre>
+name = "小P"
+age = 1 # 假设小P一岁啦
+fav_food = "Python代码"
+
+# 看，这就是 f-string！
+greeting = f"大家好，我是{name}，今年{age}岁，我最喜欢吃{fav_food}！"
+print(greeting)
+# 输出会是：大家好，我是小P，今年1岁，我最喜欢吃Python代码！
+</pre>
+        </div>
+
+        <div class="quiz-section">
+            <h3><span class="emoji">⚔️</span>第一关挑战：</h3>
+            <div id="currentQuestion_level1" class="current-question-area">
+                <!-- 题目将动态加载到这里 -->
+            </div>
+            <div class="navigation-buttons">
+                <button id="submitBtn_level1" onclick="submitSingleAnswer('level1')">提交答案</button>
+                <button id="nextBtn_level1" class="hidden" onclick="loadNextQuestion('level1')">下一题</button>
+                <button id="finishBtn_level1" class="hidden" onclick="finishLevel('level1')">完成本关</button>
+            </div>
+        </div>
+        <div class="level-badge hidden" id="badge_level1">🏅 第一关 f-string 初体验 - 通关！</div>
+    </div>
+
+    <!-- 关卡 2: f-string 进阶与 .format() 初识 -->
+    <div class="container level hidden" id="level2">
+        <h2 class="level-title"><span class="emoji">🚩</span>第二关：f-string 进阶 与 .format() 方法初探</h2>
+
+        <div class="knowledge-point">
+            <p><strong>知识点2：f-string 的更多魔法！</strong></p>
+            <p>f-string 的花括号 <code>{}</code> 里不仅能放变量名，还能进行一些简单的计算或调用函数哦！</p>
+            <div class="code-example">
+<pre>
+num1 = 10
+num2 = 5
+print(f"数字{num1}加上数字{num2}等于{num1 + num2}。") # 直接计算
+
+name = "ada lovelace"
+print(f"计算机先驱的名字是：{name.title()}。") # 调用字符串的 .title() 方法
+</pre>
+            </div>
+        </div>
+
+        <div class="knowledge-point">
+            <p><strong>知识点3：认识 <code>.format()</code> 方法</strong></p>
+            <p>在 f-string 诞生之前，Python 程序员常用 <code>.format()</code> 方法来格式化字符串。它也很有用，我们来了解一下基础用法。</p>
+            <p><strong>怎么用？</strong></p>
+            <ol>
+                <li>在字符串中使用花括号 <code>{}</code> 作为占位符。</li>
+                <li>在字符串后面紧跟 <code>.format()</code>，括号里按顺序放入你想填充到占位符的变量或值。</li>
+            </ol>
+            <div class="code-example">
+<pre>
+item = "魔法棒"
+price = 99.8
+# 使用 .format()
+message = "这根{}价值{}金币。".format(item, price)
+print(message)
+# 输出会是：这根魔法棒价值99.8金币。
+
+# 也可以用数字索引指定位置
+message_indexed = "我想买{1}，而不是{0}。".format("普通木棍", "闪光法杖")
+print(message_indexed) # 输出：我想买闪光法杖，而不是普通木棍。
+</pre>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3><span class="emoji">⚔️</span>第二关挑战：</h3>
+             <div id="currentQuestion_level2" class="current-question-area">
+                <!-- 题目将动态加载到这里 -->
+            </div>
+            <div class="navigation-buttons">
+                <button id="submitBtn_level2" onclick="submitSingleAnswer('level2')">提交答案</button>
+                <button id="nextBtn_level2" class="hidden" onclick="loadNextQuestion('level2')">下一题</button>
+                <button id="finishBtn_level2" class="hidden" onclick="finishLevel('level2')">完成本关</button>
+            </div>
+        </div>
+        <div class="level-badge hidden" id="badge_level2">🏅 第二关 f-string 进阶与 .format() 初探 - 通关！</div>
+    </div>
+    
+    <!-- 关卡 3: .format() 更多用法与综合应用 -->
+    <div class="container level hidden" id="level3">
+        <h2 class="level-title"><span class="emoji">🚩</span>第三关：.format() 深入 与 故事大王演练</h2>
+
+        <div class="knowledge-point">
+            <p><strong>知识点4：<code>.format()</code> 的命名参数</strong></p>
+            <p><code>.format()</code> 方法除了按顺序或数字索引填充，还可以使用“命名参数”，这样代码可读性会更好，也不用担心参数顺序！</p>
+            <div class="code-example">
+<pre>
+hero = "爱丽丝"
+enemy = "红皇后"
+action = "击败"
+
+# 使用命名参数
+battle_report = "英勇的{h}最终{a}了邪恶的{e}！".format(h=hero, e=enemy, a=action)
+print(battle_report)
+# 输出：英勇的爱丽丝最终击败了邪恶的红皇后！
+
+# 注意：占位符里的名字 h, e, a 和 .format()中参数名对应
+</pre>
+            </div>
+        </div>
+
+        <div class="knowledge-point">
+            <p><strong>知识点5：实战演练 - 小P故事大王</strong></p>
+            <p>现在，我们学习的格式化方法可以用来帮小P讲故事啦！小P会提供一个故事模板，里面有一些用 <code>{}</code> 标记的空位，我们需要用学到的方法把词填进去。</p>
+            <div class="code-example">
+<pre>
+# 故事模板
+story_template = "在遥远的{place}，住着一位{adjective}的{character_type}，名叫{name}。有一天，ta发现了一个神秘的{item}，它竟然会{verb}！"
+
+# 收集词语 (实际中会用 input())
+place_val = "水晶洞穴"
+adj_val = "好奇"
+char_type_val = "小精灵"
+name_val = "荧光"
+item_val = "发光蘑菇"
+verb_val = "唱歌"
+
+# 使用 f-string 填充
+filled_story_f = f"在遥远的{place_val}，住着一位{adj_val}的{char_type_val}，名叫{name_val}。有一天，ta发现了一个神秘的{item_val}，它竟然会{verb_val}！"
+print("f-string版故事:", filled_story_f)
+
+# 使用 .format() 填充 (可以用命名参数，也可以按顺序)
+# 注意模板中的占位符是名称，所以.format()也要用命名参数
+filled_story_format = story_template.format(
+    place=place_val, 
+    adjective=adj_val, 
+    character_type=char_type_val, 
+    name=name_val, 
+    item=item_val, 
+    verb=verb_val
+)
+print(".format()版故事:", filled_story_format)
+</pre>
+            <p><strong>重要提示：</strong>如果故事模板中的占位符是 <code>{place}</code>, <code>{adjective}</code> 这样的名字，那么用 <code>.format()</code> 时也必须用对应的命名参数 <code>place=...</code>, <code>adjective=...</code>。如果模板是简单的 <code>{}</code> 或者 <code>{0} {1}</code>，则可以按顺序或数字索引提供参数。</p>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h3><span class="emoji">⚔️</span>第三关挑战：</h3>
+            <div id="currentQuestion_level3" class="current-question-area">
+                <!-- 题目将动态加载到这里 -->
+            </div>
+            <div class="navigation-buttons">
+                <button id="submitBtn_level3" onclick="submitSingleAnswer('level3')">提交答案</button>
+                <button id="nextBtn_level3" class="hidden" onclick="loadNextQuestion('level3')">下一题</button>
+                <button id="finishBtn_level3" class="hidden" onclick="finishLevel('level3')">完成本关</button>
+            </div>
+        </div>
+        <div class="level-badge hidden" id="badge_level3">🏅 第三关 .format() 深入与综合应用 - 通关！</div>
+    </div>
+    
+    <!-- 通关总结 -->
+    <div class="container hidden" id="finalCompletion">
+        <h2><span class="emoji">🎉</span>恭喜你，字符串魔法师！<span class="emoji">🎉</span></h2>
+        <p>你已经成功闯过了所有关卡，掌握了Python中强大的字符串格式化魔法！</p>
+        <ul>
+            <li>你会用 <strong>f-string</strong> 快速优雅地组合文本和变量。</li>
+            <li>你也了解了 <strong><code>.format()</code></strong> 方法，包括它的按顺序、按索引和按名称填充方式。</li>
+        </ul>
+        <p>这些技能将帮助你编写出更清晰、更易读、更灵活的Python代码，无论是在制作小游戏、处理数据，还是将来学习更复杂的程序，都会非常有用！</p>
+        <p>继续你的Python冒险之旅吧！小P院长为你骄傲！<span class="emoji">🥳</span></p>
+        <div class="navigation-buttons">
+            <button onclick="resetGame()">再玩一次 / 回到第一关</button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = {
+            level1: {
+                title: "第一关：f-string 初体验 - 神奇的占位符",
+                questions: [
+                    {
+                        id: "q1_1",
+                        text: "下面哪个是正确的 f-string 写法，用来输出 \"我的宠物是小狗\" (假设变量 `pet = \"小狗\"`)？",
+                        type: "radio",
+                        options: [
+                            { value: "a", text: "A) <code>\"我的宠物是{pet}\"</code>" },
+                            { value: "b", text: "B) <code>f\"我的宠物是pet\"</code>" },
+                            { value: "c", text: "C) <code>f\"我的宠物是{pet}\"</code>" },
+                            { value: "d", text: "D) <code>F\"我的宠物是[pet]\"</code>" }
+                        ],
+                        correctAnswer: "c",
+                        explanation: "<strong>正确答案是 C。</strong>f-string 的正确写法是在字符串前加 `f` (或`F`)，并用花括号 `{}` 包裹变量名。选项A缺少 `f`；选项B没有用花括号包裹变量 `pet`；选项D使用了方括号，应该是花括号。"
+                    },
+                    {
+                        id: "q1_2",
+                        text: "使用 f-string 时，花括号 <code>{}</code> 里面的必须是已经定义好的变量名。",
+                        type: "radio", // Using radio for True/False
+                        options: [
+                            { value: "true", text: "A) 正确" },
+                            { value: "false", text: "B) 错误" }
+                        ],
+                        correctAnswer: "true",
+                        explanation: "<strong>正确答案是 A) 正确。</strong>花括号中通常放入变量名，Python会查找这个变量的值并替换。如果放入未定义的变量名，程序会报错。当然，花括号里也可以是表达式，但表达式中的变量也需要是已定义的。"
+                    },
+                    {
+                        id: "q1_3",
+                        text: "如果有代码 <code>fruit = \"苹果\"; count = 5</code>，下面哪个 f-string 会输出 \"我有5个苹果。\"？",
+                        type: "radio",
+                        options: [
+                            { value: "a", text: "A) <code>f\"我有{fruit}个{count}。\"</code>" },
+                            { value: "b", text: "B) <code>f\"我有{count}个{fruit}。\"</code>" },
+                            { value: "c", text: "C) <code>f\"我有{count}个{fruit}\"</code> (少了句号)" },
+                            { value: "d", text: "D) <code>\"我有\" + count + \"个\" + fruit + \"。\"</code> (这不是f-string)" }
+                        ],
+                        correctAnswer: "b",
+                        explanation: "<strong>正确答案是 B。</strong>为了输出 \"我有5个苹果。\"，我们需要先放入变量 `count` (值为5)，再放入变量 `fruit` (值为\"苹果\")。选项A的顺序反了。选项C虽然顺序对，但缺少了句号。选项D是传统的字符串拼接，不是f-string，并且直接用 `+` 连接数字和字符串会报错，需要将数字转为字符串。"
+                    }
+                ],
+                nextLevelId: "level2"
+            },
+            level2: {
+                 title: "第二关：f-string 进阶 与 .format() 方法初探",
+                 questions: [
+                    {
+                        id: "q2_1",
+                        text: "如果 <code>x = 3</code>，下面哪个 f-string 会输出 \"3的平方是9。\"？",
+                        type: "radio",
+                        options: [
+                            { value: "a", text: "A) <code>f\"{x}的平方是{x^2}。\"</code> (Python中 `^` 不是平方)" },
+                            { value: "b", text: "B) <code>f\"{x}的平方是{x*x}。\"</code>" },
+                            { value: "c", text: "C) <code>f\"{x}的平方是{pow(x,2)}。\"</code> (pow函数也可以)" },
+                            { value: "d", text: "D) B 和 C 都可以" }
+                        ],
+                        correctAnswer: "d",
+                        explanation: "<strong>正确答案是 D。</strong>在Python的f-string中，花括号内可以进行表达式计算。<code>x*x</code> 和 <code>pow(x,2)</code> 都能正确计算出3的平方9。而 <code>x^2</code> 在Python中是按位异或操作，不是求平方。"
+                    },
+                    {
+                        id: "q2_2",
+                        text: "<code>\"我的名字是 {}，年龄是 {}。\".format(\"小明\", 10)</code> 和 <code>f\"我的名字是 {name}，年龄是 {age}。\"</code> (假设 <code>name=\"小明\"</code>, <code>age=10</code>) 的输出结果是一样的。",
+                        type: "radio",
+                        options: [
+                            { value: "true", text: "A) 正确" },
+                            { value: "false", text: "B) 错误" }
+                        ],
+                        correctAnswer: "true",
+                        explanation: "<strong>正确答案是 A) 正确。</strong>两种方式都是有效的字符串格式化方法，并且在给定条件下，它们都会产生相同的输出：\"我的名字是 小明，年龄是 10。\""
+                    },
+                    {
+                        id: "q2_3",
+                        text: "如何使用 <code>.format()</code> 方法，让 <code>val1 = \"苹果\"</code>, <code>val2 = \"香蕉\"</code> 输出 \"我喜欢香蕉，也喜欢苹果。\"？",
+                        type: "radio",
+                        options: [
+                            { value: "a", text: "A) <code>\"我喜欢{}，也喜欢{}。\".format(val1, val2)</code>" },
+                            { value: "b", text: "B) <code>\"我喜欢{1}，也喜欢{0}。\".format(val1, val2)</code>" },
+                            { value: "c", text: "C) <code>\"我喜欢{val2}，也喜欢{val1}。\".format()</code>" },
+                            { value: "d", text: "D) <code>f\"我喜欢{val2}，也喜欢{val1}。\"</code> (题目要求用.format())" }
+                        ],
+                        correctAnswer: "b",
+                        explanation: "<strong>正确答案是 B。</strong><code>.format()</code> 方法的参数可以按数字索引访问，<code>{0}</code> 代表第一个参数，<code>{1}</code> 代表第二个参数。题目要求先输出`val2`(\"香蕉\")，再输出`val1`(\"苹果\")，所以模板中应为 <code>{1}</code> 然后 <code>{0}</code>，而 <code>.format()</code> 的参数顺序是 `(val1, val2)`。"
+                    }
+                ],
+                nextLevelId: "level3"
+            },
+            level3: {
+                title: "第三关：.format() 深入 与 故事大王演练",
+                questions: [
+                    {
+                        id: "q3_1",
+                        text: "代码 <code>\"坐标：(x={x_val}, y={y_val})\"<strong>.format(x_val=10, y_val=20)</strong></code> 的输出是？",
+                        type: "radio",
+                        options: [
+                            { value: "a", text: "A) <code>坐标：(x=10, y=20)</code>" },
+                            { value: "b", text: "B) <code>坐标：(x_val=10, y_val=20)</code>" },
+                            { value: "c", text: "C) <code>坐标：(x={10}, y={20})</code>" },
+                            { value: "d", text: "D) 报错" }
+                        ],
+                        correctAnswer: "a",
+                        explanation: "<strong>正确答案是 A。</strong>当使用 <code>.format()</code> 的命名参数时，模板字符串中的占位符 <code>{x_val}</code> 和 <code>{y_val}</code> 会被 <code>.format()</code> 方法中对应名称的参数值（即10和20）替换。所以，<code>{x_val}</code> 变成了 `10`，而不是 `x_val=10`。"
+                    },
+                    {
+                        id: "q3_2",
+                        text: "当使用 <code>.format()</code> 的命名参数时，<code>.format(name=\"小P\", age=1)</code> 和 <code>.format(age=1, name=\"小P\")</code> 对于模板 <code>\"我是{name}，{age}岁。\"</code> 来说，输出结果是相同的。",
+                        type: "radio",
+                        options: [
+                            { value: "true", text: "A) 正确" },
+                            { value: "false", text: "B) 错误" }
+                        ],
+                        correctAnswer: "true",
+                        explanation: "<strong>正确答案是 A) 正确。</strong>使用命名参数时，参数的顺序不重要，因为Python会根据名称来匹配占位符和值。所以两种写法都会正确输出 \"我是小P，1岁。\""
+                    },
+                    {
+                        id: "q3_3",
+                        text: "你有一个故事模板：<code>story_tpl = \"主角是{0}，它的目标是{1}。\"</code>，你想用 <code>hero_name = \"勇者\"</code> 和 <code>goal = \"打败魔王\"</code> 来填充它。下面哪个是正确的？",
+                        type: "radio",
+                        options: [
+                            { value: "a", text: "A) <code>story_tpl.format(hero_name, goal)</code>" },
+                            { value: "b", text: "B) <code>f\"story_tpl\"</code> (这没有填充)" },
+                            { value: "c", text: "C) <code>story_tpl.format(name=hero_name, aim=goal)</code> (命名参数与模板不符)" },
+                            { value: "d", text: "D) <code>f\"主角是{hero_name}，它的目标是{goal}。\"</code> (这也是一种方法，但此题更侧重考察对模板的.format()应用)" }
+                        ],
+                        correctAnswer: "a",
+                        explanation: "<strong>正确答案是 A。</strong>模板 <code>story_tpl</code> 使用了数字索引占位符 <code>{0}</code> 和 <code>{1}</code>。因此，调用 <code>.format()</code> 时应按顺序提供参数，<code>hero_name</code> 会填充到 <code>{0}</code>，<code>goal</code> 会填充到 <code>{1}</code>。选项C使用了命名参数，但模板中没有对应的命名占位符。选项D是使用f-string的正确方法，但题目可能更想考察如何使用给定的模板变量 `story_tpl`。"
+                    }
+                ],
+                nextLevelId: null // 表示这是最后一关
+            }
+        };
+
+        let currentLevelId = 'level1';
+        let currentQuestionIndices = {}; // To store current question index for each level
+
+        function renderQuestion(levelId, questionIndex) {
+            const levelData = quizData[levelId];
+            const questionData = levelData.questions[questionIndex];
+            const questionArea = document.getElementById(`currentQuestion_${levelId}`);
+            
+            let optionsHtml = '';
+            questionData.options.forEach(opt => {
+                optionsHtml += `<label><input type="radio" name="q_${levelId}_${questionIndex}" value="${opt.value}">${opt.text}</label>`;
+            });
+
+            questionArea.innerHTML = `
+                <p class="question-text"><strong>${questionIndex + 1}. ${questionData.text}</strong></p>
+                <div class="options" id="options_${levelId}_${questionIndex}">${optionsHtml}</div>
+                <div class="feedback-area hidden" id="feedbackArea_${levelId}_${questionIndex}">
+                    <p class="result"></p>
+                    <div class="explanation"></div>
+                </div>
+            `;
+            // Show submit, hide next/finish
+            document.getElementById(`submitBtn_${levelId}`).classList.remove('hidden');
+            document.getElementById(`nextBtn_${levelId}`).classList.add('hidden');
+            document.getElementById(`finishBtn_${levelId}`).classList.add('hidden');
+        }
+
+        function submitSingleAnswer(levelId) {
+            const questionIndex = currentQuestionIndices[levelId];
+            const levelData = quizData[levelId];
+            const questionData = levelData.questions[questionIndex];
+            const feedbackArea = document.getElementById(`feedbackArea_${levelId}_${questionIndex}`);
+            const resultEl = feedbackArea.querySelector('.result');
+            const explanationEl = feedbackArea.querySelector('.explanation');
+            const selectedOption = document.querySelector(`input[name="q_${levelId}_${questionIndex}"]:checked`);
+
+            if (!selectedOption) {
+                alert("请选择一个答案！");
+                return;
+            }
+
+            // Disable options after submission
+            const optionsContainer = document.getElementById(`options_${levelId}_${questionIndex}`);
+            optionsContainer.querySelectorAll('input[type="radio"]').forEach(radio => radio.disabled = true);
+
+
+            if (selectedOption.value === questionData.correctAnswer) {
+                resultEl.textContent = "回答正确！👍";
+                resultEl.className = "result correct";
+            } else {
+                resultEl.textContent = "回答错误，正确答案解析如下：";
+                resultEl.className = "result incorrect";
+            }
+            explanationEl.innerHTML = questionData.explanation; // Use innerHTML because explanation might contain HTML
+            feedbackArea.classList.remove('hidden');
+
+            // Show appropriate next button
+            document.getElementById(`submitBtn_${levelId}`).classList.add('hidden');
+            if (questionIndex < levelData.questions.length - 1) {
+                document.getElementById(`nextBtn_${levelId}`).classList.remove('hidden');
+            } else {
+                document.getElementById(`finishBtn_${levelId}`).classList.remove('hidden');
+            }
+        }
+
+        function loadNextQuestion(levelId) {
+            currentQuestionIndices[levelId]++;
+            renderQuestion(levelId, currentQuestionIndices[levelId]);
+        }
+
+        function finishLevel(levelId) {
+            document.getElementById(`badge_${levelId}`).classList.remove('hidden');
+            document.getElementById(`finishBtn_${levelId}`).classList.add('hidden'); // Hide finish button
+            
+            const nextLevel = quizData[levelId].nextLevelId;
+            if (nextLevel) {
+                // Add a button to go to the next level explicitly
+                const navButtons = document.querySelector(`#${levelId} .navigation-buttons`);
+                let nextLevelButton = document.getElementById(`goTo_${nextLevel}`);
+                if (!nextLevelButton) { // Create if not exists
+                    nextLevelButton = document.createElement('button');
+                    nextLevelButton.id = `goTo_${nextLevel}`;
+                    nextLevelButton.textContent = `挑战 ${quizData[nextLevel].title.split('：')[0]}`; // Get "第X关"
+                    nextLevelButton.onclick = function() { startLevel(nextLevel); };
+                    navButtons.appendChild(nextLevelButton);
+                }
+                nextLevelButton.classList.remove('hidden');
+
+            } else {
+                // All levels completed
+                setTimeout(() => {
+                    document.getElementById(levelId).classList.add('hidden');
+                    document.getElementById('finalCompletion').classList.remove('hidden');
+                    window.scrollTo(0, document.getElementById('finalCompletion').offsetTop - 20);
+                }, 1500);
+            }
+        }
+        
+        function startLevel(levelId) {
+            currentLevelId = levelId;
+            if (currentQuestionIndices[levelId] === undefined) {
+                 currentQuestionIndices[levelId] = 0;
+            }
+            // Hide all levels first
+            document.querySelectorAll('.level').forEach(lvl => lvl.classList.add('hidden'));
+            // Show current level
+            document.getElementById(levelId).classList.remove('hidden');
+            // Hide "Go to next level" buttons from previous levels if any
+            document.querySelectorAll('.navigation-buttons button[id^="goTo_"]').forEach(btn => {
+                if (btn.id !== `goTo_${levelId}`) { // Don't hide button for current level if it was somehow created
+                     btn.classList.add('hidden');
+                }
+            });
+
+
+            renderQuestion(levelId, currentQuestionIndices[levelId]);
+            window.scrollTo(0, document.getElementById(levelId).offsetTop - 20);
+        }
+
+        function resetGame() {
+            document.getElementById('finalCompletion').classList.add('hidden');
+            document.querySelectorAll('.level-badge').forEach(badge => badge.classList.add('hidden'));
+            document.querySelectorAll('.feedback-area').forEach(fb => fb.classList.add('hidden'));
+             // Remove dynamically added "Go to Next Level" buttons
+            document.querySelectorAll('.navigation-buttons button[id^="goTo_"]').forEach(btn => btn.remove());
+
+
+            currentQuestionIndices = {}; // Reset indices
+            startLevel('level1');
+        }
+
+        // Initial load
+        window.onload = function() {
+            startLevel('level1');
+        };
+    </script>
+
+</body>
+</html>

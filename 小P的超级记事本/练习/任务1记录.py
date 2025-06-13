@@ -4,7 +4,7 @@ file = open("memos.txt", "w", encoding="utf-8")
 # encoding="utf-8" 确保中文字符能正确保存
 
 # 2. 写入内容
-file.write("今天天气真好！")
+file.write("我可不是三岁小朋友")
 
 # 3. 关闭文件 (非常重要！确保内容真正保存到磁盘)
 file.close()
