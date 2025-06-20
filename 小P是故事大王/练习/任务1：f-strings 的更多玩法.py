@@ -7,7 +7,7 @@ print(name + " 正在 " + action + " " + item + "。")
 
 apples = 5
 oranges = 3
-print(f"我总共有",apples + oranges,"个水果。")
+print(f"1我总共有",apples + oranges,"个水果。")
 print(f"我总共有 {apples + oranges} 个水果。")
 
 # 调用简单函数/方法：
@@ -18,3 +18,5 @@ print(f"你的名字有 {word_count} 个字母。")
 
 price = 19.998
 print(f"这个商品的价格是：${price:.2f}") # 保留两位小数
+
+%.2f%

@@ -2,6 +2,7 @@
 # Time in 2025/6/5 15:27
 
 # 导入我们自己的记事本模块
+
 import 小P的超级记事本.jishiben
 import 小P是故事大王.gushidawang as gushi
 # 1. 给我们的小P起个名字
@@ -36,10 +37,11 @@ while True:
         小P的超级记事本.jishiben.run_notepad()
         print(f"\n小P：记事本已关闭。我们继续聊天吧！")
 
-    elif "吹牛" in user_input:
-        print(f"小P：好的，正在为你打开记吹牛功能...")
+
+    elif "吹牛" in user_input  or "讲故事" in user_input:
+        print(f"小P：好的，正在为你打开吹牛功能...")
         # 调用吹牛py文件中的函数
-？？？？？？？？？？？？？？？？？？？？？
+        gushi.tell_a_story()
         print(f"\n小P：吹牛模式已关闭。我们继续聊天吧！")
 
     # 如果不是特殊指令，就用之前的方式回答
