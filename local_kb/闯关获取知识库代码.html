@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闯关学代码：打造小P的“知识库”</title>
+    <style>
+        /* CSS Reset and Basic Styles */
+        body, h1, h2, h3, h4, p, pre, code, ul, li, div {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.8;
+            background-color: #f0f2f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 30px 40px;
+            border: 1px solid #e8e8e8;
+        }
+
+        /* Headings */
+        h1 {
+            color: #2c3e50;
+            font-size: 2.4em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .intro {
+            font-size: 1.1em;
+            color: #555;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #e67e22;
+            padding-bottom: 20px;
+        }
+
+        /* Level Card Style */
+        .level-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            transition: all 0.3s ease-in-out;
+            border-left: 5px solid #e67e22;
+        }
+
+        .level-card h2 {
+            color: #e67e22;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #16a085;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .objective {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background: #ecf0f1;
+            border-radius: 6px;
+            border-left: 3px solid #7f8c8d;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+        pre code {
+            font-family: "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 0.95em;
+        }
+        
+        /* Analysis & Example Sections */
+        .analysis, .example-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fdfdfd;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+        }
+        .analysis h4, .example-section h4 {
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+        .analysis ul { list-style-position: inside; padding-left: 10px; }
+        .analysis li { margin-bottom: 8px; }
+        .analysis code, .example-section code {
+            background-color: #e8e8e8;
+            color: #c0392b;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #fff8e1;
+            border: 1px solid #ffecb3;
+            border-radius: 8px;
+        }
+        .quiz-section h4 { color: #f39c12; }
+        .quiz-options div { margin: 10px 0; }
+        .quiz-options label { margin-left: 8px; cursor: pointer; }
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            padding: 8px;
+            border-radius: 4px;
+            display: none;
+        }
+        .feedback.correct { color: #27ae60; background-color: #e8f5e9; }
+        .feedback.incorrect { color: #c0392b; background-color: #fbe9e7; }
+
+        /* Buttons */
+        .quiz-submit-btn, .unlock-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 1.05em;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quiz-submit-btn { background-color: #f39c12; }
+        .quiz-submit-btn:hover { background-color: #d35400; }
+        .unlock-btn { background: linear-gradient(90deg, #e67e22, #d35400); }
+        .unlock-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4); }
+        .unlock-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>闯关学代码：打造小P的“知识库”</h1>
+        <p class="intro">
+            欢迎来到新的挑战！这次，我们要教小P如何“学习”和“记忆”。我们将通过打造一个本地知识库，让小P能回答我们的问题。准备好探索Python字典的奥秘了吗？
+        </p>
+
+        <!-- Level 1: Dictionary -->
+        <div id="level-1" class="level-card">
+            <h2>关卡 1：知识的核心 (Python字典)</h2>
+            <p class="objective">学习目标：理解Python中最重要的数据结构之一——字典（Dictionary），它使用“键-值”对来存储信息。</p>
+            
+            <div class="example-section">
+                <h4>举个例子 📖</h4>
+                <p>字典就像一本真正的字典或通讯录。每个“键”（key，如一个单词或人名）都对应一个“值”（value，如单词的释义或电话号码）。</p>
+                <pre><code># 创建一个简单的通讯录字典
+phone_book = {
+    "小明": "13800138000",
+    "小红": "13900139000"
+}
+
+# 通过“键”来查找“值”
+print(phone_book["小明"]) # 输出将会是: 13800138000</code></pre>
+            </div>
+
+            <h3>应用到我们的项目中</h3>
+            <p>小P的“大脑”就是一个字典，问题是“键”，答案是“值”。</p>
+            <pre><code>KNOWLEDGE_BASE = {
+    "python是什么": "Python是一种非常流行的编程语言...",
+    "小p是谁": "我就是小P呀...",
+    "你好": "你好呀！很高兴再次和你对话！"
+}</code></pre>
+
+            <div class="analysis">
+                <h4>💡 代码解读</h4>
+                <ul>
+                    <li><code>KNOWLEDGE_BASE</code> 是一个字典变量。</li>
+                    <li>花括号 <code>{}</code> 用来定义字典。</li>
+                    <li>每个元素都是一个 <code>"键": "值"</code> 的组合，并用逗号隔开。</li>
+                </ul>
+            </div>
+            
+            <div class="quiz-section">
+                <h4>🧠 小测验</h4>
+                <p>根据上面的 <code>KNOWLEDGE_BASE</code> 字典，哪行代码可以正确获取到 "我就是小P呀..." 这个答案？</p>
+                <div class="quiz-options">
+                    <div><input type="radio" id="q1a" name="quiz1" value="a" data-correct="true"><label for="q1a"><code>KNOWLEDGE_BASE["小p是谁"]</code></label></div>
+                    <div><input type="radio" id="q1b" name="quiz1" value="b"><label for="q1b"><code>KNOWLEDGE_BASE[1]</code></label></div>
+                    <div><input type="radio" id="q1c" name="quiz1" value="c"><label for="q1c"><code>KNOWLEDGE_BASE("小p是谁")</code></label></div>
+                </div>
+                <button class="quiz-submit-btn" data-level="1">提交答案</button>
+                <p class="feedback" id="feedback-1"></p>
+            </div>
+            
+            <button class="unlock-btn" data-unlock="level-2" disabled>我理解字典了，下一关！</button>
+        </div>
+
+        <!-- Level 2: Add/Modify Dictionary -->
+        <div id="level-2" class="level-card hidden">
+            <h2>关卡 2：教我新知识 (添加与修改字典)</h2>
+            <p class="objective">学习目标：学习如何向字典中添加新的键值对，以及如何修改已存在的键所对应的值。</p>
+
+            <div class="example-section">
+                <h4>举个例子 📝</h4>
+                <p>我们可以随时更新我们的通讯录。</p>
+                <pre><code>phone_book = {"小明": "123"}
+
+# 添加一个新联系人
+phone_book["小刚"] = "456" 
+# 现在 phone_book 是 {"小明": "123", "小刚": "456"}
+
+# 修改一个已有联系人的号码
+phone_book["小明"] = "789" 
+# 现在 phone_book 是 {"小明": "789", "小刚": "456"}</code></pre>
+            </div>
+
+            <h3>应用到我们的项目中</h3>
+            <pre><code>def add_knowledge(question, answer):
+    # 对问题进行清洗，变成统一格式的键
+    question_key = question.lower().strip()
+    
+    KNOWLEDGE_BASE[question_key] = answer.strip()
+    return f"好嘞，我已经记住了..."</code></pre>
+
+            <div class="analysis">
+                <h4>💡 代码解读</h4>
+                <ul>
+                    <li><code>question.lower()</code> 把问题中的所有大写字母转为小写。</li>
+                    <li><code>.strip()</code> 去掉问题和答案两端的空格。这样做可以保证键的规范性。</li>
+                    <li><code>KNOWLEDGE_BASE[question_key] = answer.strip()</code> 这行代码是核心！如果 <code>question_key</code> 在字典中不存在，就添加这个新知识；如果已存在，就用新的答案覆盖旧的答案。</li>
+                </ul>
+            </div>
+            
+            <div class="quiz-section">
+                <h4>🧠 小测验</h4>
+                <p>如果 <code>KNOWLEDGE_BASE</code> 中已经有了 <code>"你好": "你好呀！"</code>。此时我们执行 `add_knowledge("你好", "Hello!")`，那么再次查询 "你好" 会得到什么结果？</p>
+                <div class="quiz-options">
+                    <div><input type="radio" id="q2a" name="quiz2" value="a"><label for="q2a">程序会报错，因为键已存在。</label></div>
+                    <div><input type="radio" id="q2b" name="quiz2" value="b"><label for="q2b">"你好呀！"</label></div>
+                    <div><input type="radio" id="q2c" name="quiz2" value="c" data-correct="true"><label for="q2c">"Hello!" (旧的值会被新的值覆盖)</label></div>
+                </div>
+                <button class="quiz-submit-btn" data-level="2">提交答案</button>
+                <p class="feedback" id="feedback-2"></p>
+            </div>
+            
+            <button class="unlock-btn" data-unlock="level-3" disabled>我学会教小P了！</button>
+        </div>
+        
+        <!-- Level 3: Querying -->
+        <div id="level-3" class="level-card hidden">
+            <h2>关卡 3：学以致用 (智能查询)</h2>
+            <p class="objective">学习目标：学习如何从知识库中查询信息，并了解从“精确”到“模糊”的多层次查询策略。</p>
+            
+            <h3>应用到我们的项目中</h3>
+            <pre><code>def query_knowledge_base(user_query):
+    query_lower = user_query.lower().strip()
+    
+    # 策略1: 精确匹配
+    if query_lower in KNOWLEDGE_BASE:
+        return KNOWLEDGE_BASE[query_lower]
+
+    # 策略2: 包含匹配 (更智能一点)
+    for key_question, answer in KNOWLEDGE_BASE.items():
+        if key_question in query_lower: 
+             return answer
+    
+    return None # 表示没找到</code></pre>
+            
+            <div class="analysis">
+                <h4>💡 代码解读：小P的思考方式</h4>
+                <p>这个函数模拟了小P查找答案的过程，它分两步走：</p>
+                <ul>
+                    <li><strong>第一步：精确匹配。</strong>它会先看看用户的问题（处理后）是否和知识库里的某个“键”完全一样。比如用户问 `python是什么`，知识库里正好有这个键，就直接返回答案。这是最快最准的方式。</li>
+                    <li><strong>第二步：包含匹配。</strong>如果第一步没找到，小P会变得“聪明”一点。它会遍历知识库里所有的问题（键），看看有没有哪个键被包含在了用户的问题里。例如，知识库里有键 `"小p是谁"`，用户问的是 `"你好，请问小p是谁呀"`，因为后者包含了前者，小P也能猜到你想问什么，然后给出答案。</li>
+                    <li><code>.items()</code> 方法可以让我们同时遍历字典的键和值。</li>
+                </ul>
+            </div>
+            
+            <div class="quiz-section">
+                <h4>🧠 小测验</h4>
+                <p>知识库里有一个键是 `"今天天气怎么样"`。如果一个用户问 `"我想知道今天天气怎么样"`，上面的代码能找到答案吗？如果能，是哪个策略生效了？</p>
+                <div class="quiz-options">
+                    <div><input type="radio" id="q3a" name="quiz3" value="a"><label for="q3a">不能，因为问题不完全一样。</label></div>
+                    <div><input type="radio" id="q3b" name="quiz3" value="b" data-correct="true"><label for="q3b">能，通过“策略2：包含匹配”。</label></div>
+                    <div><input type="radio" id="q3c" name="quiz3" value="c"><label for="q3c">能，通过“策略1：精确匹配”。</label></div>
+                </div>
+                <button class="quiz-submit-btn" data-level="3">提交答案</button>
+                <p class="feedback" id="feedback-3"></p>
+            </div>
+
+            <button class="unlock-btn" data-unlock="level-4" disabled>查询的逻辑我也懂了！</button>
+        </div>
+        
+        <!-- Level 4: The Menu -->
+        <div id="level-4" class="level-card hidden">
+            <h2>关卡 4：知识库管家 (整合与启动)</h2>
+            <p class="objective">学习目标：将“查询”和“添加”功能整合到一个交互菜单中，并使用 `if __name__ == "__main__"` 来创建程序的入口。</p>
+            
+            <h3>应用到我们的项目中</h3>
+            <pre><code>def run_knowledge_menu():
+    print("\n🧠 小P的知识库问答 🧠")
+    while True:
+        # ... 打印菜单 ...
+        choice = input("请输入你的选择 (0-2): ").strip()
+
+        if choice == '1':
+            user_question = input("你有什么问题想问小P？...")
+            answer = query_knowledge_base(user_question)
+            # ... 处理并打印答案
+        elif choice == '2':
+            new_q = input("你想教小P什么问题？...")
+            new_a = input("答案是什么呢？...")
+            result = add_knowledge(new_q, new_a)
+            # ... 打印结果
+        elif choice == '0':
+            break
+
+if __name__ == "__main__":
+    print("测试本地知识库模块...")
+    run_knowledge_menu()</code></pre>
+            
+            <div class="analysis">
+                <h4>💡 代码解读</h4>
+                <ul>
+                    <li><code>run_knowledge_menu()</code> 是一个总管函数，它用一个 `while True` 无限循环来持续显示菜单。</li>
+                    <li>根据用户的输入 `choice`，它会用 `if/elif/else` 结构来决定是调用 `query_knowledge_base` 函数（问问题）还是 `add_knowledge` 函数（教知识）。</li>
+                    <li><code>if __name__ == "__main__":</code> 确保了只有当我们直接运行 `kb_handler.py` 这个文件时，<code>run_knowledge_menu()</code> 才会启动，方便我们独立测试这个模块的功能。</li>
+                </ul>
+            </div>
+
+            <div class="quiz-section">
+                <h4>🧠 小测验</h4>
+                <p>在 `run_knowledge_menu` 函数中，`break` 语句的作用是什么？</p>
+                <div class="quiz-options">
+                    <div><input type="radio" id="q4a" name="quiz4" value="a"><label for="q4a">让程序暂停一下。</label></div>
+                    <div><input type="radio" id="q4b" name="quiz4" value="b"><label for="q4b">重新开始 `while` 循环。</label></div>
+                    <div><input type="radio" id="q4c" name="quiz4" value="c" data-correct="true"><label for="q4c">跳出并结束当前的 `while` 循环。</label></div>
+                </div>
+                <button class="quiz-submit-btn" data-level="4">提交答案</button>
+                <p class="feedback" id="feedback-4"></p>
+            </div>
+
+            <button class="unlock-btn" data-unlock="final-challenge" disabled>我已全部通关！查看最终代码！</button>
+        </div>
+
+        <!-- Final Code -->
+        <div id="final-challenge" class="level-card hidden">
+            <h2>🏆 最终挑战：完整的知识库咒语 🏆</h2>
+            <p class="objective">太棒了！你已经掌握了构建小P“大脑”的核心技术。下面是完整的代码，它包含了我们学到的所有内容，并加入了一些更完善的细节（比如更全面的问题清理和更松散的匹配）。</p>
+            <div style="position: relative;">
+                <button id="copy-button" style="position: absolute; top: 15px; right: 15px; background-color: #e67e22; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; opacity: 0.8; transition: all 0.3s ease;">一键复制</button>
+                <pre><code id="python-code"># features/local_kb/kb_handler.py
+
+KNOWLEDGE_BASE = {
+    "python是什么": "Python是一种非常流行的编程语言，简单易学，功能强大！我们现在就在用Python来创造我哦！",
+    "小p是谁": "我就是小P呀，一个正在学习成长的AI助手，很高兴认识你！",
+    "今天天气怎么样": "我现在还不能联网看天气呢，不过你可以问问我别的问题！",
+    "我们班有多少人": "这个问题我需要你告诉我答案，然后我就能记住了！下次你问我，我就能回答啦！",
+    "你会做什么": "我会和你聊天，帮你记事，讲故事，玩随机魔法，还能回答一些我知道的问题！",
+    "你好": "你好呀！很高兴再次和你对话！" # 知识库内的特定问候
+}
+
+def add_knowledge(question, answer):
+    """向知识库添加新的问答对 (简单实现，不持久化，程序关闭后会丢失)"""
+    question_key = question.lower().strip().replace("？", "").replace("?", "").replace("！", "").replace("!", "")
+    if not question_key:
+        return "问题不能为空哦！"
+    if not answer.strip():
+        return "答案不能为空哦！"
+        
+    KNOWLEDGE_BASE[question_key] = answer.strip()
+    return f"好嘞，我已经记住了：'{question}'的答案是'{answer}'。"
+
+def query_knowledge_base(user_query):
+    """根据用户的问题查询知识库。"""
+    query_lower = user_query.lower().strip().replace("？", "").replace("?", "").replace("！", "").replace("!", "")
+    
+    if not query_lower:
+        return None # 或者返回一个特定提示，由调用者处理
+
+    # 1. 精确匹配
+    if query_lower in KNOWLEDGE_BASE:
+        return KNOWLEDGE_BASE[query_lower]
+
+    # 2. 简单的关键词包含匹配 (用户问题包含知识库的某个键)
+    for key_question, answer in KNOWLEDGE_BASE.items():
+        if key_question in query_lower: 
+             return answer
+    
+    # 3. 更松散的关键词匹配 (知识库键的词语在用户问题中，或反之)
+    #    这部分需要更小心处理，避免不相关的匹配，这里简化
+    query_words = set(query_lower.split())
+    for key_question, answer in KNOWLEDGE_BASE.items():
+        key_q_words = set(key_question.split())
+        # 如果有共同的词语（忽略太短的词）
+        common_words = {w for w in query_words if len(w) > 1}.intersection({w for w in key_q_words if len(w) > 1})
+        if common_words: # 如果有交集，可以认为相关
+            # 这里可以根据交集词的数量或重要性来决定是否返回，现在简单返回第一个匹配到的
+            return answer
+
+    return None # 表示没有找到答案
+
+def run_knowledge_menu():
+    """本地知识库交互菜单"""
+    print("\n🧠 小P的知识库问答 🧠")
+    while True:
+        print("\n你可以：")
+        print("1. 问小P一个问题 (直接在聊天中问也可以)")
+        print("2. 教小P新的知识")
+        print("0. 返回与小P聊天")
+
+        choice = input("请输入你的选择 (0-2): ").strip()
+
+        if choice == '1':
+            user_question = input("你有什么问题想问小P？\n你：")
+            answer = query_knowledge_base(user_question)
+            if answer:
+                print(f"小P：{answer}")
+            else:
+                print(f"小P：嗯...这个问题我现在还不知道答案呢。也许你可以通过选项2教我？")
+        elif choice == '2':
+            new_q = input("你想教小P什么问题？\n问题：")
+            new_a = input(f"'{new_q}'的答案是什么呢？\n答案：")
+            result = add_knowledge(new_q, new_a)
+            print(f"小P：{result}")
+        elif choice == '0':
+            print("已退出知识库问答。")
+            break
+        else:
+            print("无效的选择，请输入0到2之间的数字哦！")
+
+if __name__ == "__main__":
+    print("测试本地知识库模块...")
+    # run_knowledge_menu()
+    print(f"问：Python是什么?  答：{query_knowledge_base('Python是什么?')}")
+    print(f"问：小p是谁呀  答：{query_knowledge_base('小p是谁呀')}")
+    print(add_knowledge("地球的形状", "地球是一个近似球形的行星。"))
+    print(f"问：地球的形状是什么  答：{query_knowledge_base('地球的形状是什么')}")
+    print(f"问：hello  答：{query_knowledge_base('hello')}") # 测试找不到的情况
+</code></pre>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Quiz and Unlock Logic ---
+        const quizButtons = document.querySelectorAll('.quiz-submit-btn');
+        quizButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const level = button.dataset.level;
+                const quizForm = button.closest('.quiz-section');
+                const selectedOption = quizForm.querySelector(`input[name="quiz${level}"]:checked`);
+                const feedbackEl = document.getElementById(`feedback-${level}`);
+                
+                if (!selectedOption) {
+                    feedbackEl.textContent = "请先选择一个答案！";
+                    feedbackEl.className = 'feedback incorrect';
+                    feedbackEl.style.display = 'block';
+                    return;
+                }
+
+                const isCorrect = selectedOption.hasAttribute('data-correct');
+                if (isCorrect) {
+                    feedbackEl.textContent = "回答正确！太棒了！🎉";
+                    feedbackEl.className = 'feedback correct';
+                    
+                    const levelCard = button.closest('.level-card');
+                    const unlockButton = levelCard.querySelector('.unlock-btn');
+                    unlockButton.disabled = false;
+                    
+                    quizForm.querySelectorAll('input, button').forEach(el => el.disabled = true);
+                } else {
+                    feedbackEl.textContent = "答案不对哦，再想想？🤔";
+                    feedbackEl.className = 'feedback incorrect';
+                }
+                feedbackEl.style.display = 'block';
+            });
+        });
+
+        // --- Unlock Button Logic ---
+        const unlockButtons = document.querySelectorAll('.unlock-btn');
+        unlockButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                if (button.disabled) return;
+                const targetId = button.getAttribute('data-unlock');
+                const nextLevel = document.getElementById(targetId);
+
+                if (nextLevel) {
+                    nextLevel.classList.remove('hidden');
+                    nextLevel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    e.target.textContent = '已完成 ✔️';
+                }
+            });
+        });
+
+        // --- Copy Button Logic ---
+        const copyButton = document.getElementById('copy-button');
+        if (copyButton) {
+            const codeBlock = document.getElementById('python-code');
+            copyButton.addEventListener('click', () => {
+                navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+                    copyButton.textContent = '已复制!';
+                    copyButton.style.backgroundColor = '#2ecc71';
+                    setTimeout(() => {
+                        copyButton.textContent = '一键复制';
+                        copyButton.style.backgroundColor = '#e67e22';
+                    }, 2000);
+                });
+            });
+        }
+    });
+    </script>
+
+</body>
+</html>

@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a1b5bf9-a335-4706-bc22-f51466b8dfc3" name="更改" comment="06061651">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/xiaoP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/xiaoP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mian.py" beforeDir="false" afterPath="$PROJECT_DIR$/mian.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/小P是故事大王/gushidawang.py" beforeDir="false" afterPath="$PROJECT_DIR$/小P是故事大王/gushidawang.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/小P是故事大王/练习/任务1：f-strings 的更多玩法.py" beforeDir="false" afterPath="$PROJECT_DIR$/小P是故事大王/练习/任务1：f-strings 的更多玩法.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local_kb/kb_handler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local_kb/闯关获取知识库代码.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/整合教程获取代码.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +32,12 @@
     &quot;assignee&quot;: &quot;GunGig&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/GunGig/XiaoP.git&quot;,
-    &quot;accountId&quot;: &quot;30c40092-96a0-4a1b-8e15-0057da907652&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/GunGig/XiaoP.git",
+    "accountId": "725a966a-44ad-47c0-8bdf-a767794b4d5a"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -49,43 +47,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Python.gushidawang.executor&quot;: &quot;Run&quot;,
-    &quot;Python.mian.executor&quot;: &quot;Run&quot;,
-    &quot;Python.一个简单的例子.executor&quot;: &quot;Run&quot;,
-    &quot;Python.任务1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.任务1记录 (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.任务1：f-strings 的更多玩法.executor&quot;: &quot;Run&quot;,
-    &quot;Python.任务2追加 (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.任务2追加.executor&quot;: &quot;Run&quot;,
-    &quot;Python.任务4封装添加备忘录功能的函数.executor&quot;: &quot;Run&quot;,
-    &quot;Python.任务4：用列表收集用户输入的词语.executor&quot;: &quot;Run&quot;,
-    &quot;Python.封装函数.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;H:/Github/XiaoP/小P是故事大王&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.gushidawang.executor": "Run",
+    "Python.mian.executor": "Run",
+    "Python.一个简单的例子.executor": "Run",
+    "Python.任务1.executor": "Run",
+    "Python.任务1记录 (1).executor": "Run",
+    "Python.任务1：f-strings 的更多玩法.executor": "Run",
+    "Python.任务2追加 (1).executor": "Run",
+    "Python.任务2追加.executor": "Run",
+    "Python.任务4封装添加备忘录功能的函数.executor": "Run",
+    "Python.任务4：用列表收集用户输入的词语.executor": "Run",
+    "Python.封装函数.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "full.screen.before.presentation.mode": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Lin/PycharmProjects/XiaoP",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lin\PycharmProjects\XiaoP" />
+      <recent name="C:\Users\Lin\PycharmProjects\XiaoP\local_kb" />
       <recent name="H:\Github\XiaoP\小P是故事大王" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Lin\PycharmProjects\XiaoP" />
       <recent name="H:\Github\XiaoP\小P是故事大王" />
       <recent name="H:\Github\XiaoP\小P的超级记事本" />
       <recent name="H:\Github\XiaoP\小P的超级记事本\练习" />
@@ -266,6 +267,7 @@
       <workItem from="1749869624412" duration="208000" />
       <workItem from="1749869837775" duration="6015000" />
       <workItem from="1749953560951" duration="5929000" />
+      <workItem from="1750432596858" duration="1318000" />
     </task>
     <task id="LOCAL-00001" summary="06051533">
       <option name="closed" value="true" />
@@ -325,42 +327,6 @@
     <MESSAGE value="06060145" />
     <MESSAGE value="06061651" />
     <option name="LAST_COMMIT_MESSAGE" value="06061651" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/mian.py</url>
-          <line>5</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/mian.py</url>
-          <line>6</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/mian.py</url>
-          <line>40</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/mian.py</url>
-          <line>41</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/mian.py</url>
-          <line>43</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/mian.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/XiaoP$2__1_.coverage" NAME="任务2追加 (1) 覆盖结果" MODIFIED="1749266519346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/小P的超级记事本/练习" />
