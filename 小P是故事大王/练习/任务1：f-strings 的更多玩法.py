@@ -18,5 +18,3 @@ print(f"你的名字有 {word_count} 个字母。")
 
 price = 19.998
 print(f"这个商品的价格是：${price:.2f}") # 保留两位小数
-
-%.2f%
