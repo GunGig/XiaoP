@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小P的成长日记 - 连接真实世界！</title>
+    <style>
+        body { font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; line-height: 1.8; margin: 0; padding: 20px; background-color: #f4f7f6; color: #333; display: flex; flex-direction: column; align-items: center; align-items: center;
+            /* --- 新增：禁止用户选择文本 --- */
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE 10+ */
+            user-select: none; /* 标准语法 */ }
+        .container { max-width: 900px; width: 100%; background-color: #fff; padding: 20px 30px; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.1); margin-bottom: 25px; }
+        h1, h2, h3, h4 { color: #005a9c; text-align: center; }
+        h1 { font-size: 2.4em; margin-bottom: 30px; border-bottom: 3px solid #0078d4; padding-bottom: 15px; }
+        .quest-section { border: 2px solid #0078d4; border-radius: 10px; padding: 25px; margin-top: 30px; background-color: #f8f9fa; }
+        .quest-title { font-size: 2em; color: #0078d4; margin-bottom: 20px; text-align: left; display: flex; align-items: center;}
+        .quest-title .emoji { font-size: 1.5em; margin-right: 10px;}
+        .concept-block, .code-drilldown-block, .setup-step { background-color: #ffffff; border-left: 6px solid #ffc107; padding: 18px; margin-bottom: 25px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+        .concept-block h4, .code-drilldown-block h4, .setup-step h4 { color: #d9534f; text-align: left; margin-top: 0; font-size: 1.3em; display: flex; align-items: center;}
+        .concept-block h4 .emoji, .code-drilldown-block h4 .emoji { font-size: 1.2em; margin-right: 8px;}
+        .code-example, .python-code-revealed pre, .code-snippet-to-learn pre { background-color: #2b3e50; color: #e0e0e0; padding: 18px; border-radius: 6px; overflow-x: auto; font-family: 'Fira Code', 'Consolas', 'Courier New', monospace; font-size: 0.95em; margin: 18px 0; border: 1px solid #34495e; }
+        .quiz-question { background-color: #fffde7; border: 1px dashed #ffc107; padding: 18px; border-radius: 8px; margin-bottom: 15px; }
+        .quiz-question p strong { color: #005a9c; }
+        .quiz-options label { display: block; margin-bottom: 8px; cursor: pointer; padding: 8px; border-radius: 4px; background-color: #f9f9f9; border: 1px solid #eee; transition: background-color 0.2s; }
+        .quiz-options label:hover { background-color: #e9ecef; }
+        .quiz-options input[type="radio"] { margin-right: 10px; vertical-align: middle; }
+        .feedback-area { margin-top: 15px; padding: 12px; border-radius: 5px; }
+        .feedback-area .result.correct { color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb; font-weight: bold; }
+        .feedback-area .result.incorrect { color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; font-weight: bold; }
+        .action-button { display: inline-block; margin: 10px 5px 0px 0px; background-color: #0078d4; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 1em; cursor: pointer; }
+        .action-button:disabled { background-color: #adb5bd; cursor: not-allowed; }
+        .hidden { display: none !important; }
+        .emoji { font-size: 1.1em; }
+        .instruction { font-style: italic; color: #5a6268; margin-bottom: 18px; padding: 10px; background-color: #e9ecef; border-radius: 4px; }
+        .final-code-container { border: 2px solid #28a745; padding: 15px; margin-top: 20px; background-color: #f0fff0; border-radius: 8px; }
+        .final-code-container h4 { color: #28a745; text-align: left; }
+        .path-display { font-family: 'Courier New', monospace; background-color: #eee; padding: 2px 6px; border-radius: 3px; }
+        .final-code-header { display: flex; justify-content: space-between; align-items: center; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1><span class="emoji">🌍</span>小P连接世界，能力大升级！<span class="emoji">📡</span></h1>
+        <p class="instruction">小P不再满足于只和我们聊天、记事了！它想连接到外面广阔的互联网世界，获取真实、实时的数据，比如天气预报和新鲜出炉的笑话！要做到这一点，我们需要教会它使用一种叫做 **API** 的超能力。</p>
+    </div>
+
+    <!-- Step 1: Setup -->
+    <div class="container quest-section">
+        <h2 class="quest-title"><span class="emoji">🛠️</span>第一步：准备“网络连接”工具和“地图”</h2>
+        <div class="setup-step" id="setup-step-api1">
+            <h4><span class="emoji">📦</span>安装 <code>requests</code> 工具箱</h4>
+            <p>为了让小P能“上网冲浪”，我们需要给它安装一个非常强大的网络工具箱，叫做 <code>requests</code>。</p>
+            <p>请打开你的PyCharm终端 (Terminal) 或者电脑的命令提示符(CMD)/终端，输入并执行下面的命令：</p>
+            <div class="code-example"><pre>pip install requests</pre></div>
+            <button class="action-button" onclick="markSetupStepComplete('setup-step-api1', 'setup-step-api2')">我已安装好 requests</button>
+        </div>
+        <div class="setup-step hidden" id="setup-step-api2">
+            <h4><span class="emoji">🗺️</span>准备城市编码“地图” (CSV文件)</h4>
+            <p>高德天气API需要用一个特殊的“城市编码” (adcode) 来识别城市，而不是直接用中文名。我们需要一本“密码本”来查询每个城市对应的编码。</p>
+            <p>请确保你已经下载了 <span class="path-display">AMap_adcode_citycode.csv</span> 文件，并将它放在你的项目根目录 <span class="path-display">XiaoP/</span> 下，和 `mian.py` 文件在一起。</p>
+            <button class="action-button" onclick="markSetupStepComplete('setup-step-api2', 'setup-step-api3')">我已放好CSV文件</button>
+        </div>
+        <div class="setup-step hidden" id="setup-step-api3">
+            <h4><span class="emoji">📂</span>创建 API 服务文件夹</h4>
+            <p>现在，我们为小P的网络服务能力创建一个专属的文件夹。</p>
+            <ol>
+                <li>在你的项目根目录 <span class="path-display">XiaoP/</span> 中，创建一个新文件夹，命名为 <span class="path-display">api_services</span>。</li>
+                <li>在 <span class="path-display">api_services</span> 文件夹里，创建 `__init__.py` (空文件) 和 `api_handler.py`。</li>
+            </ol>
+            <button class="action-button" onclick="markSetupStepComplete('setup-step-api3', 'concept-api-internet')">我已创建好文件结构</button>
+        </div>
+    </div>
+    
+    <!-- Step 2: Concepts -->
+    <div class="container quest-section hidden" id="concept-api-internet">
+        <h2 class="quest-title"><span class="emoji">💡</span>第二步：理解网络世界的规则</h2>
+        <div class="concept-block" id="concept-api-whatis">
+            <h4><span class="emoji">🛎️</span>网络奥秘1：什么是 API？</h4>
+            <p>API (Application Programming Interface) 就像餐厅里的**服务员**。我们（小P程序）告诉服务员我们想点什么菜（比如“北京的天气”），服务员就去厨房（拥有数据的服务器）拿菜，然后把菜（天气数据）端给我们。</p>
+            <div class="quiz-question">
+                <p><strong>小测验A1.1：</strong>如果小P想获取天气预报，那么API扮演了什么角色？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_api_1" value="a"> A) 顾客 (小P自己)</label>
+                    <label><input type="radio" name="q_api_1" value="b"> B) 服务员 (负责沟通)</label>
+                    <label><input type="radio" name="q_api_1" value="c"> C) 厨房 (拥有天气数据的地方)</label>
+                </div>
+                <button class="action-button" onclick="checkConceptQuiz('q_api_1', 'b', 'feedback_api_1', 'concept-api-url')">提交答案</button>
+                <div class="feedback-area hidden" id="feedback_api_1"></div>
+            </div>
+        </div>
+        <div class="concept-block hidden" id="concept-api-url">
+            <h4><span class="emoji">🔗</span>网络奥秘2：URL与参数</h4>
+            <p>每个API都有一个独一无二的地址(URL)。我们还需要告诉它一些具体信息，比如要查哪个城市的天气。这些额外信息叫做**参数**，跟在问号 <code>?</code> 后面。</p>
+            <div class="code-example"><pre>https://restapi.amap.com/v3/weather/weatherInfo?key=你的密钥&city=城市编码</pre></div>
+            <div class="quiz-question">
+                <p><strong>小测验A1.2：</strong>用来分隔基础地址和参数的符号通常是什么？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_api_2" value="a"> A) <code>&</code></label>
+                    <label><input type="radio" name="q_api_2" value="b"> B) <code>=</code></label>
+                    <label><input type="radio" name="q_api_2" value="c"> C) <code>?</code></label>
+                </div>
+                <button class="action-button" onclick="checkConceptQuiz('q_api_2', 'c', 'feedback_api_2', 'concept-api-json')">提交答案</button>
+                <div class="feedback-area hidden" id="feedback_api_2"></div>
+            </div>
+        </div>
+        <div class="concept-block hidden" id="concept-api-json">
+            <h4><span class="emoji">📜</span>网络奥秘3：什么是 JSON？</h4>
+            <p>服务器返回的数据通常用一种叫 **JSON** 的格式包装，它和Python的**字典**、**列表**非常像！</p>
+            <div class="code-example"><pre>{ "status": "1", "lives": [ { "city": "北京市", "weather": "晴" } ] }</pre></div>
+            <div class="quiz-question">
+                <p><strong>小测验A1.3：</strong>在上面的JSON示例中，<code>"lives"</code> 对应的值是一个什么数据类型？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_api_3" value="a"> A) 字符串</label>
+                    <label><input type="radio" name="q_api_3" value="b"> B) 列表 (里面包含一个字典)</label>
+                    <label><input type="radio" name="q_api_3" value="c"> C) 数字</label>
+                </div>
+                <button class="action-button" onclick="checkConceptQuiz('q_api_3', 'b', 'feedback_api_3', null, 'unlock-joke-api-code-draft')">提交答案</button>
+                <div class="feedback-area hidden" id="feedback_api_3"></div>
+            </div>
+        </div>
+        <button class="action-button hidden" id="unlock-joke-api-code-draft" onclick="revealCodeDraft('joke-api-code-draft-area', 'joke-api-code-learn-1')">你已了解网络规则！开始学习“讲笑话”API</button>
+    </div>
+
+    <!-- Step 3: Joke API Learning -->
+    <div class="container quest-section hidden" id="joke-api-code-draft-area">
+        <h2 class="quest-title"><span class="emoji">😄</span>第三步：让小P成为“开心果” (随机笑话API)</h2>
+        <p class="instruction">我们将学习如何编写代码，让小P能从网上获取一个随机笑话。这是一个非常简单的API，是最好的入门练习！</p>
+        <div class="code-example"><pre id="joke-api-draft-code-display"># 在 api_handler.py 文件中
+import requests
+
+def get_random_joke():
+    # [代码片段JOKE.1: 定义API地址并发起请求]
+    # [代码片段JOKE.2: 检查请求是否成功]
+        # [代码片段JOKE.3: 解析JSON数据并提取笑话]
+    # [代码片段JOKE.4: 处理各种失败情况]
+</pre></div>
+        <div class="code-drilldown-block hidden" id="joke-api-code-learn-1">
+            <h4><span class="emoji">📞</span>代码奥秘JOKE.1：拨打“笑话热线”</h4>
+            <div class="code-snippet-to-learn"><pre>    joke_api_url = "https://official-joke-api.appspot.com/random_joke"
+    response = requests.get(joke_api_url, timeout=5)</pre></div>
+            <p>这行代码用 `requests.get()` 向API地址发送请求。`timeout=5` 表示如果5秒没收到回复，就放弃。</p>
+            <div class="quiz-question">
+                <p><strong>测验JOKE.1：</strong><code>requests.get(url, timeout=5)</code> 的作用是什么？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_cd_joke_1" value="a">向URL发送获取信息的请求，并等待最多5秒。</label>
+                    <label><input type="radio" name="q_cd_joke_1" value="b">打印URL地址5次。</label>
+                </div>
+                <button class="action-button" onclick="checkCodeDrilldownQuiz('q_cd_joke_1', 'a', 'feedback_cd_joke_1', 'joke-api-draft-code-display', 'JOKE.1', 'joke-api-code-learn-2')">提交</button>
+                <div class="feedback-area hidden" id="feedback_cd_joke_1"></div>
+            </div>
+        </div>
+        <div class="code-drilldown-block hidden" id="joke-api-code-learn-2">
+             <h4><span class="emoji">✅</span>代码奥秘JOKE.2：检查“电话”是否打通</h4>
+            <div class="code-snippet-to-learn"><pre>    if response.status_code == 200:</pre></div>
+            <p>状态码 `200` 代表“OK，一切顺利！”。我们检查它来确认请求是否成功。</p>
+            <div class="quiz-question">
+                <p><strong>测验JOKE.2：</strong>状态码 `200` 代表什么？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_cd_joke_2" value="a">发生错误</label>
+                    <label><input type="radio" name="q_cd_joke_2" value="b">请求成功</label>
+                </div>
+                <button class="action-button" onclick="checkCodeDrilldownQuiz('q_cd_joke_2', 'b', 'feedback_cd_joke_2', 'joke-api-draft-code-display', 'JOKE.2', 'joke-api-code-learn-3')">提交</button>
+                <div class="feedback-area hidden" id="feedback_cd_joke_2"></div>
+            </div>
+        </div>
+        <div class="code-drilldown-block hidden" id="joke-api-code-learn-3">
+             <h4><span class="emoji">🍽️</span>代码奥秘JOKE.3：解析并提取笑话</h4>
+            <div class="code-snippet-to-learn"><pre>        joke_data = response.json()
+        setup = joke_data.get("setup", "没找到铺垫...")
+        punchline = joke_data.get("punchline", "笑点跑了！")
+        return f"{setup}\\n... {punchline} 😄"</pre></div>
+            <p><code>response.json()</code> 把JSON转成Python字典。用 <code>.get()</code> 方法可以安全地获取内容，即使键不存在也不会报错。</p>
+            <div class="quiz-question">
+                 <p><strong>测验JOKE.3：</strong>使用 <code>.get("key", "default")</code> 方法的主要好处是？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_cd_joke_3" value="a">如果"key"不存在，它不会让程序报错。</label>
+                    <label><input type="radio" name="q_cd_joke_3" value="b">它运行速度更快。</label>
+                </div>
+                <button class="action-button" onclick="checkCodeDrilldownQuiz('q_cd_joke_3', 'a', 'feedback_cd_joke_3', 'joke-api-draft-code-display', 'JOKE.3', 'joke-api-code-learn-4')">提交</button>
+                <div class="feedback-area hidden" id="feedback_cd_joke_3"></div>
+            </div>
+        </div>
+        <div class="code-drilldown-block hidden" id="joke-api-code-learn-4">
+             <h4><span class="emoji">❌</span>代码奥秘JOKE.4：处理失败</h4>
+            <div class="code-snippet-to-learn"><pre>    except requests.exceptions.RequestException as e:
+        return f"网络连接出错了！错误：{e}"</pre></div>
+            <p>我们将整个请求过程用 `try...except` 包裹起来，这样即使网络断开或超时，程序也不会崩溃，而是会返回一个友好的错误提示。</p>
+            <div class="quiz-question">
+                <p><strong>测验JOKE.4：</strong><code>try...except</code> 结构主要用来做什么？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_cd_joke_4" value="a">让代码运行更快</label>
+                    <label><input type="radio" name="q_cd_joke_4" value="b">检查变量类型</label>
+                    <label><input type="radio" name="q_cd_joke_4" value="c">捕捉并处理可能发生的错误，防止程序崩溃</label>
+                </div>
+                <button class="action-button" onclick="checkCodeDrilldownQuiz('q_cd_joke_4', 'c', 'feedback_cd_joke_4', 'joke-api-draft-code-display', 'JOKE.4', null, 'joke-api-final-code')">提交</button>
+                <div class="feedback-area hidden" id="feedback_cd_joke_4"></div>
+            </div>
+        </div>
+        <div class="final-code-container hidden" id="joke-api-final-code">
+            <h4><span class="emoji">✅</span>太棒了！你已掌握 `get_random_joke` 魔法！</h4>
+            <p class="instruction">这是获取笑话功能的完整Python代码。把它复制到你创建的 <span class="path-display">api_services/api_handler.py</span> 文件中吧！</p>
+            <div class="python-code-revealed"><pre id="joke-api-final-code-content"></pre></div>
+            <button class="action-button" onclick="revealCodeDraft('weather-api-code-draft-area', 'weather-api-code-learn-1')" style="margin: 20px auto; display: block;">我已复制代码，开始进阶挑战！</button>
+        </div>
+    </div>
+    
+    <!-- Step 4: Weather API Learning (REBUILT) -->
+    <div class="container quest-section hidden" id="weather-api-code-draft-area">
+        <h2 class="quest-title"><span class="emoji">🌟</span>第四步：进阶挑战 - 成为“天气播报员”</h2>
+        <p class="instruction">你已经成功学会了简单的笑话API！现在，我们用同样的方法，来学习更强大的天气API。请仔细阅读代码和注释，然后将它添加到你的 <code>api_handler.py</code> 文件中。</p>
+        <div class="code-example"><pre id="weather-api-draft-code-display">
+# 在 get_random_joke() 函数下面添加
+def get_amap_weather(city_adcode):
+    # [代码片段WEATHER.1: 准备密钥和URL]
+    # [代码片段WEATHER.2: 发送请求并处理网络错误]
+        # [代码片段WEATHER.3: 检查HTTP响应是否成功]
+            # [代码片段WEATHER.4: 解析JSON并检查API业务状态]
+                # [代码片段WEATHER.5: 检查并提取有效天气数据]
+                    # [代码片段WEATHER.6: 格式化并返回成功结果]
+</pre></div>
+        <!-- Weather API Learning Blocks -->
+        <div class="code-drilldown-block hidden" id="weather-api-code-learn-1">
+            <h4><span class="emoji">🔑</span>代码奥秘WEATHER.1：准备密钥和URL</h4>
+            <div class="code-snippet-to-learn"><pre>    api_key = 'd0efe2e3026aea2fa8e3e369b7e6255d'
+    weather_url = f"https://restapi.amap.com/v3/weather/weatherInfo?city={city_adcode}&key={api_key}"</pre></div>
+            <p>天气API需要一个`api_key`作为“通行证”。我们用f-string把传入的`city_adcode`和`api_key`组合成一个完整的URL。</p>
+             <div class="quiz-question">
+                <p><strong>测验WEATHER.1：</strong>如果 `city_adcode` 的值是 "110000", `weather_url` 的末尾会是什么？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_cd_weather_1" value="a">...&key=d0efe...d</label>
+                    <label><input type="radio" name="q_cd_weather_1" value="b">...&city=110000&key=d0efe...d</label>
+                </div>
+                <button class="action-button" onclick="checkCodeDrilldownQuiz('q_cd_weather_1', 'b', 'feedback_cd_weather_1', 'weather-api-draft-code-display', 'WEATHER.1', 'weather-api-code-learn-2')">提交</button>
+                <div class="feedback-area hidden" id="feedback_cd_weather_1"></div>
+            </div>
+        </div>
+        <div class="code-drilldown-block hidden" id="weather-api-code-learn-2">
+            <h4><span class="emoji">📡</span>代码奥秘WEATHER.2：发送请求与网络错误处理</h4>
+            <div class="code-snippet-to-learn"><pre>    try:
+        response = requests.get(weather_url, timeout=5)
+        # ... 后面是处理response的代码 ...
+    except requests.exceptions.RequestException as e:
+        return f"网络连接出错了！错误详情：{e}"</pre></div>
+            <p>这一步和笑话API完全一样！我们用`try...except`来捕捉可能发生的网络连接错误，防止程序崩溃。</p>
+            <div class="quiz-question">
+                <p><strong>测验WEATHER.2：</strong>如果电脑断网了，这段代码会执行哪个部分？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_cd_weather_2" value="a">`try` 里面的部分</label>
+                    <label><input type="radio" name="q_cd_weather_2" value="b">`except` 里面的部分</label>
+                </div>
+                <button class="action-button" onclick="checkCodeDrilldownQuiz('q_cd_weather_2', 'b', 'feedback_cd_weather_2', 'weather-api-draft-code-display', 'WEATHER.2', 'weather-api-code-learn-3')">提交</button>
+                <div class="feedback-area hidden" id="feedback_cd_weather_2"></div>
+            </div>
+        </div>
+        <div class="code-drilldown-block hidden" id="weather-api-code-learn-3">
+            <h4><span class="emoji">✅</span>代码奥秘WEATHER.3：检查HTTP响应</h4>
+            <div class="code-snippet-to-learn"><pre>        if response.status_code == 200:
+            # 请求成功，处理数据...
+        else:
+            return f"连接天气服务器失败，错误码：{response.status_code}"</pre></div>
+            <p>同样，我们检查`status_code`是否为`200`，确认我们和天气服务器的“网络连接”是通畅的。</p>
+             <div class="quiz-question">
+                <p><strong>测验WEATHER.3：</strong>如果 `response.status_code` 是 `404` (找不到页面)，程序会返回什么？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_cd_weather_3" value="a">继续处理数据</label>
+                    <label><input type="radio" name="q_cd_weather_3" value="b">返回包含错误码404的提示信息</label>
+                </div>
+                <button class="action-button" onclick="checkCodeDrilldownQuiz('q_cd_weather_3', 'b', 'feedback_cd_weather_3', 'weather-api-draft-code-display', 'WEATHER.3', 'weather-api-code-learn-4')">提交</button>
+                <div class="feedback-area hidden" id="feedback_cd_weather_3"></div>
+            </div>
+        </div>
+        <div class="code-drilldown-block hidden" id="weather-api-code-learn-4">
+            <h4><span class="emoji">🚦</span>代码奥秘WEATHER.4：检查API业务状态</h4>
+            <div class="code-snippet-to-learn"><pre>            weather_data = response.json()
+            if weather_data.get('status') == '1':
+                # API业务处理成功，继续...
+            else:
+                error_info = weather_data.get('info', '未知错误')
+                return f"天气服务返回错误：{error_info}"</pre></div>
+            <p><b>这是关键一步！</b>网络连接成功(200)不代表API调用成功。高德API用它自己的`status`字段（'1'代表成功）告诉我们业务是否成功（比如API Key是否有效）。</p>
+            <div class="quiz-question">
+                <p><strong>测验WEATHER.4：</strong>如果API Key错了，高德返回的JSON中 `status` 是 '0'，程序会做什么？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_cd_weather_4" value="a">继续提取天气信息</label>
+                    <label><input type="radio" name="q_cd_weather_4" value="b">进入else分支，返回API返回的错误信息</label>
+                </div>
+                <button class="action-button" onclick="checkCodeDrilldownQuiz('q_cd_weather_4', 'b', 'feedback_cd_weather_4', 'weather-api-draft-code-display', 'WEATHER.4', 'weather-api-code-learn-5')">提交</button>
+                <div class="feedback-area hidden" id="feedback_cd_weather_4"></div>
+            </div>
+        </div>
+        <div class="code-drilldown-block hidden" id="weather-api-code-learn-5">
+            <h4><span class="emoji">🕵️</span>代码奥秘WEATHER.5：验证天气数据结构</h4>
+            <div class="code-snippet-to-learn"><pre>                live_weather_list = weather_data.get('lives')
+                if (isinstance(live_weather_list, list) and len(live_weather_list) > 0):
+                    live_weather = live_weather_list[0]
+                else:
+                    return f"城市编码 '{city_adcode}' 有误，无法找到天气信息。"</pre></div>
+            <p>这是重要的一层保护！如果给的城市编码是错的，`lives`字段可能会是空的`[]`。我们必须检查它是一个非空列表，才能安全地使用它。</p>
+            <div class="quiz-question">
+                <p><strong>测验WEATHER.5：</strong>如果API返回的`lives`是`[]`（一个空列表），程序会做什么？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_cd_weather_5" value="a">程序会报错</label>
+                    <label><input type="radio" name="q_cd_weather_5" value="b">进入else分支，提示城市编码有误</label>
+                </div>
+                <button class="action-button" onclick="checkCodeDrilldownQuiz('q_cd_weather_5', 'b', 'feedback_cd_weather_5', 'weather-api-draft-code-display', 'WEATHER.5', 'weather-api-code-learn-6')">提交</button>
+                <div class="feedback-area hidden" id="feedback_cd_weather_5"></div>
+            </div>
+        </div>
+        <div class="code-drilldown-block hidden" id="weather-api-code-learn-6">
+            <h4><span class="emoji">📝</span>代码奥秘WEATHER.6：格式化并返回结果</h4>
+            <div class="code-snippet-to-learn"><pre>                    city = live_weather.get('city', '未知')
+                    weather = live_weather.get('weather', '未知')
+                    # ...等等
+                    return f"{city}的天气是：{weather}..."</pre></div>
+            <p>和笑话API一样，我们用`.get()`方法安全地从字典中提取每一项天气数据，并用f-string格式化成一句话返回。</p>
+            <div class="quiz-question">
+                <p><strong>测验WEATHER.6：</strong>`live_weather.get('city', '未知')` 这行代码确保了什么？</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q_cd_weather_6" value="a">`city`变量的值永远是“未知”</label>
+                    <label><input type="radio" name="q_cd_weather_6" value="b">即使API没返回`city`字段，程序也不会崩溃，而是会使用“未知”作为默认值</label>
+                </div>
+                <button class="action-button" onclick="checkCodeDrilldownQuiz('q_cd_weather_6', 'b', 'feedback_cd_weather_6', 'weather-api-draft-code-display', 'WEATHER.6', null, 'weather-api-final-code')">提交</button>
+                <div class="feedback-area hidden" id="feedback_cd_weather_6"></div>
+            </div>
+        </div>
+        <div class="final-code-container hidden" id="weather-api-final-code">
+            <h4><span class="emoji">✅</span>太棒了！你已完全掌握 `get_amap_weather`！</h4>
+            <p class="instruction">这是获取天气功能的完整Python代码。把它复制并粘贴到 `api_handler.py` 文件中，放在 `get_random_joke()` 函数的下面。</p>
+            <div class="python-code-revealed"><pre id="weather-api-final-code-content"></pre></div>
+            <button class="action-button" onclick="revealCodeDraft('mian-py-integration', null)" style="margin: 20px auto; display: block;">我已添加天气代码，学习如何整合！</button>
+        </div>
+    </div>
+
+    <!-- Step 5: Final Integration -->
+    <div class="container quest-section hidden" id="mian-py-integration">
+        <h2 class="quest-title"><span class="emoji">🧩</span>最后一步：整合到主程序 `mian.py`</h2>
+        <p class="instruction">你已经准备好了强大的API服务模块，现在是时候让小P的主程序学会如何使用它了！这将是我们最后一次修改 `mian.py` 文件。</p>
+        <div class="final-code-container hidden">
+            <div class="final-code-header">
+                <h4>这是你需要更新的 `mian.py` 完整代码：</h4>
+<!--                <button class="action-button" onclick="copyCodeToClipboard('mian', this)">一键复制代码</button>-->
+            </div>
+            <p class="instruction">主要改动包括：导入 `csv` 和 `api_handler`；增加加载城市编码的函数；并在主循环中添加了判断“天气”和“讲个笑话”的逻辑。</p>
+            <div class="python-code-revealed"><pre id="mian-py-final-code-content"></pre></div>
+        </div>
+    </div>
+
+    <script>
+        const questData = {
+            'api': {
+                codeToCopy: {
+                    'joke': `import requests
+import json
+
+def get_random_joke():
+    """
+    从一个公共API获取一个随机的英文笑话。
+    (此函数未作改动)
+    """
+    joke_api_url = "https://official-joke-api.appspot.com/random_joke"
+
+    try:
+        response = requests.get(joke_api_url, timeout=5)
+        if response.status_code == 200:
+            joke_data = response.json()
+            setup = joke_data.get("setup", "好像没找到笑话的铺垫...")
+            punchline = joke_data.get("punchline", "emmm...笑点跑掉了！")
+            return f"{setup}\\n... {punchline} 😄"
+        else:
+            return f"获取笑话失败了，网络服务员说错误码是：{response.status_code}"
+    except requests.exceptions.RequestException as e:
+        return f"网络连接出错了！无法联系到笑话中心。错误信息：{e}"`,
+                    
+                    'weather': `def get_amap_weather(city_adcode):
+    """
+    (高德天气API版 - 已修复并优化)
+    根据城市编码(adcode)从高德开放平台获取实时天气。
+    此函数特别处理了无效adcode会导致API返回一个包含空列表的特殊情况。
+    """
+    api_key = 'd0efe2e3026aea2fa8e3e369b7e6255d'
+
+    if not city_adcode:
+        return "我需要一个有效的城市编码才能查询天气。"
+
+    weather_url = f"https://restapi.amap.com/v3/weather/weatherInfo?city={city_adcode}&key={api_key}&extensions=base"
+
+    try:
+        response = requests.get(weather_url, timeout=5)
+
+        if response.status_code == 200:
+            weather_data = response.json()
+
+            if weather_data.get('status') == '1':
+                live_weather_list = weather_data.get('lives')
+
+                # --- 这是最终、最稳健的检查逻辑 ---
+                # 1. 'lives' 键存在且其值为列表。
+                # 2. 该列表不为空。
+                # 3. 列表的第一个元素是字典（而不是另一个列表）。
+                # 4. 该字典不为空。
+                if (isinstance(live_weather_list, list) and
+                        len(live_weather_list) > 0 and
+                        isinstance(live_weather_list[0], dict) and
+                        live_weather_list[0]):
+
+                    live_weather = live_weather_list[0]
+
+                    city = live_weather.get('city', '未知城市')
+                    weather = live_weather.get('weather', '未知')
+                    temperature = live_weather.get('temperature', '未知')
+                    wind_direction = live_weather.get('winddirection', '未知')
+                    wind_power = live_weather.get('windpower', '未知')
+                    humidity = live_weather.get('humidity', '未知')
+                    report_time = live_weather.get('reporttime', '未知时间')
+
+                    return (
+                        f"{city}的实时天气：{weather}，"
+                        f"温度：{temperature}°C，"
+                        f"{wind_direction}风 {wind_power}级，"
+                        f"空气湿度：{humidity}%。 "
+                        f"(数据更新于: {report_time})"
+                    )
+                else:
+                    # 这个 'else' 分支现在可以正确地捕获 'status' 为 '1'
+                    # 但 'lives' 中数据无效的情况，这种情况通常意味着 adcode 错误。
+                    return f"发送的城市编码 '{city_adcode}' 有误，无法找到对应的天气信息。"
+            else:
+                error_info = weather_data.get('info', '未知错误')
+                return f"天气服务返回错误：{error_info}"
+        else:
+            return f"连接天气服务器失败，服务器返回错误码：{response.status_code}"
+
+    except requests.exceptions.RequestException as e:
+        return f"网络连接出错了！无法获取天气信息。错误详情：{e}"
+
+
+
+# --- 主程序入口和测试区 ---
+if __name__ == '__main__':`,
+                    
+                    'mian': `# mian.py
+# creator：XianSong_Lin
+# Time in 2025/6/5 15:27
+
+import csv
+import random
+
+# --- 导入我们自己的所有功能模块 ---
+try:
+    import 小P的超级记事本.jishiben
+
+    notepad_module_found = True
+except ImportError:
+    print("警告：未能找到 '记事本' 模块。")
+    notepad_module_found = False
+
+try:
+    import 小P是故事大王.gushidawang as gushi
+
+    story_module_found = True
+except ImportError:
+    print("警告：未能找到 '故事大王' 模块。")
+    story_module_found = False
+
+try:
+    import random_magic.magic_handler
+
+    magic_module_found = True
+except ImportError:
+    print("警告：未能找到 '随机魔法' 模块。")
+    magic_module_found = False
+
+try:
+    import local_kb.kb_handler
+
+    kb_module_found = True
+except ImportError:
+    print("警告：未能找到 '本地知识库' 模块。")
+    kb_module_found = False
+
+# 新增API模块的导入
+try:
+    import api_services.api_handler
+
+    api_module_found = True
+except ImportError:
+    print("警告：未能找到 'API服务' 模块。天气功能将不可用。")
+    api_module_found = False
+
+
+# --- 新增功能1：从CSV文件加载城市编码 ---
+def load_city_adcodes(filename="AMap_adcode_citycode.csv"):
+    """
+    在程序启动时，从CSV文件中读取所有城市名和adcode，存入一个字典。
+    这样我们就不需要每次都去读文件，程序会运行得更快！
+    """
+    adcode_map = {}
+    try:
+        # 使用'utf-8'编码打开文件，以正确读取中文
+        with open(filename, mode='r', encoding='utf-8') as infile:
+            reader = csv.reader(infile)
+            next(reader)  # 跳过第一行，因为它是表头 (中文名, adcode, citycode)
+
+            # 遍历文件的每一行数据
+            for row in reader:
+                # 假设CSV文件的第一列是中文名，第二列是adcode
+                # .strip()可以去掉两边的多余空格
+                city_name = row[0].strip()
+                adcode = row[1].strip()
+
+                # 确保城市名和adcode都不是空的
+                if city_name and adcode:
+                    # 将城市名作为键，adcode作为值，存入字典
+                    # 我们去掉城市名中的'市'、'县'、'区'，让匹配更容易
+                    # 比如用户输入"北京"，也能匹配到"北京市"
+                    cleaned_city_name = city_name.replace('市', "")
+                    adcode_map[cleaned_city_name] = adcode
+
+                    # 为了能同时匹配 "北京市" 和 "北京"，我们把带"市"的也加进去
+                    if city_name.endswith('市'):
+                        adcode_map[city_name] = adcode
+
+        print(f"成功从 {filename} 加载了 {len(adcode_map)} 个城市/地区编码。")
+        return adcode_map
+    except FileNotFoundError:
+        print(f"错误：找不到城市编码文件 '{filename}'！请确保它和mian.py在同一个文件夹下。")
+        return {}  # 返回一个空字典
+    except Exception as e:
+        print(f"读取城市编码文件 '{filename}' 时发生错误：{e}")
+        return {}
+
+
+# --- 新增功能2：在用户的问话中找到城市 ---
+def find_city_in_query(user_input, adcode_map):
+    """
+    遍历我们所有的城市名，看看哪个城市名出现在了用户的问话里。
+    """
+    for city_name in adcode_map.keys():
+        if city_name in user_input:
+            # 找到了！返回这个城市的名字和它的adcode
+            # print(city_name, adcode_map[city_name])
+            return city_name, adcode_map[city_name]
+    # 如果找遍了都没找到
+    return None, None
+
+
+# --- 程序启动时执行，加载城市数据 ---
+# 这个字典 CITY_ADCODES 会在整个程序运行期间都存在
+CITY_ADCODES = load_city_adcodes()
+
+# 1. 给我们的小P起个名字
+my_ai_name = "小P助手"
+
+# 2. 小P做自我介绍 (更新)
+print(f"你好！我是{my_ai_name}。很高兴认识你！")
+print("你可以对我说 '你好'，或者问我 '北京天气怎么样'。")
+# 动态生成介绍
+if notepad_module_found: print(f"输入 '记事本' 可以使用我的记事本功能。")
+if story_module_found: print(f"输入 '讲故事' 或 '吹牛' 可以听我讲故事。")
+if magic_module_found: print(f"输入 '随机魔法' 或 '魔法' 可以让我帮你做选择或玩游戏。")
+if kb_module_found: print(f"输入 '知识库' 或 '教你' 可以与我的知识库互动。")
+print(f"输入 '退出' 或 '再见' 就可以结束聊天。")
+
+# 4. 准备一些简单的固定回复
+responses = {
+    "你好呀": "你好你好！今天天气真不错！",
+    "你叫什么名字": f"我叫{my_ai_name}，很高兴为你服务！",
+}
+
+# 5. 创建一个主循环
+while True:
+    user_input = input("\\n你：").strip()
+
+    if user_input.lower() in ["退出", "再见", "bye", "exit"]:
+        print(f"小P：好的，下次再聊！拜拜！")
+        break
+
+    # --- 天气查询逻辑 (智能版) ---
+    # 条件：用户输入了"天气"，并且API模块和城市数据都已成功加载
+    elif "天气" in user_input and api_module_found and CITY_ADCODES:
+        city_name, adcode = find_city_in_query(user_input, CITY_ADCODES)
+
+        if city_name and adcode:
+            print(f"小P：好的，正在为你查询 {city_name} 的天气...")
+            weather_info = api_services.api_handler.get_amap_weather(adcode)
+            print(f"小P播报：{weather_info}")
+        else:
+            # 用户提到了"天气"，但我们没能在他的话里找到我们认识的城市
+            print("小P：我听到了“天气”，但不太确定你想查询哪个城市呢？你可以试试说“北京天气怎么样”。")
+
+    elif "记事本" in user_input and notepad_module_found:
+        print(f"小P：好的，正在为你打开记事本功能...")
+        小P的超级记事本.jishiben.run_notepad()
+        print(f"\\n小P：记事本已关闭。我们继续聊天吧！")
+
+    elif ("吹牛" in user_input or "讲故事" in user_input) and story_module_found:
+        print(f"小P：好的，准备听我大显身手吧！")
+        gushi.tell_a_story()
+        print(f"\\n小P：故事讲完啦！我们继续聊天吧！")
+
+    elif ("随机魔法" in user_input or "魔法" in user_input) and magic_module_found:
+        print(f"小P：好的，准备好见证奇迹了吗？进入随机魔法屋！")
+        random_magic.magic_handler.run_random_magic_menu()
+        print(f"\\n小P：魔法时间结束。我们继续聊天吧！")
+
+    elif ("知识库" == user_input.lower() or "教你" in user_input) and kb_module_found:
+        print(f"小P：好的，我们来探索一下我的知识库吧！")
+        local_kb.kb_handler.run_knowledge_menu()
+        print(f"\\n小P：知识库互动结束。还有其他想聊的吗？")
+
+    else:  # 默认回复逻辑
+        found_answer = False
+        # 优先检查知识库
+        if kb_module_found:
+            kb_answer = local_kb.kb_handler.query_knowledge_base(user_input)
+            if kb_answer:
+                print(f"小P：{kb_answer}")
+                found_answer = True
+
+        # 如果知识库没有，再检查预设的简单回复
+        if not found_answer:
+            if user_input.lower() in responses:
+                print(f"小P：{responses[user_input.lower()]}")
+                found_answer = True
+            elif "你好" in user_input.lower():
+                print("小P：你好呀！很高兴认识你！")
+                found_answer = True
+
+        # 如果都没有找到答案
+        if not found_answer:
+            default_responses = [
+                "嗯...你说的这个我还在学习中呢。",
+                "这个问题有点深奥，我得回去查查书！",
+                "你可以试试问我“你会做什么”，或者通过“知识库”功能教我一些新东西哦！",
+                "我对这个还不太了解，能换个话题吗？"
+            ]
+            print(f"小P：{random.choice(default_responses)}")`
+                }
+            }
+        };
+
+        const masteredFragments = {};
+
+        function initializeMasteryTracker() {
+             ['JOKE.1', 'JOKE.2', 'JOKE.3', 'JOKE.4', 'WEATHER.1', 'WEATHER.2', 'WEATHER.3', 'WEATHER.4', 'WEATHER.5', 'WEATHER.6'].forEach(key => {
+                masteredFragments[key] = false;
+            });
+        }
+
+        function markSetupStepComplete(currentStepId, nextStepId) {
+            const currentStepEl = document.getElementById(currentStepId);
+            currentStepEl.style.borderColor = "#28a745";
+            const button = currentStepEl.querySelector('button');
+            button.disabled = true;
+            button.textContent = "已完成 ✔️";
+            if (nextStepId) {
+                const nextStepEl = document.getElementById(nextStepId);
+                if(nextStepEl) {
+                    nextStepEl.classList.remove('hidden');
+                    const firstSubStep = nextStepEl.querySelector('.concept-block');
+                    if(firstSubStep) firstSubStep.classList.remove('hidden');
+                    nextStepEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }
+        
+        function checkConceptQuiz(radioName, correctAnswer, feedbackId, nextConceptId, unlockButtonId) {
+            const selectedOption = document.querySelector(`input[name="${radioName}"]:checked`);
+            const feedbackEl = document.getElementById(feedbackId);
+            const quizButton = feedbackEl.closest('.quiz-question').querySelector('button');
+            if (!selectedOption) {
+                feedbackEl.innerHTML = "<p class='result incorrect'>请选择一个答案！</p>";
+                feedbackEl.classList.remove('hidden');
+                return;
+            }
+            if (selectedOption.value === correctAnswer) {
+                feedbackEl.innerHTML = "<p class='result correct'>回答正确！你理解了这个基础概念！👍</p>";
+                quizButton.disabled = true;
+                if (nextConceptId) {
+                    setTimeout(() => {
+                        const nextEl = document.getElementById(nextConceptId);
+                        if(nextEl) nextEl.classList.remove('hidden');
+                    }, 500);
+                } else if (unlockButtonId) {
+                     document.getElementById(unlockButtonId).classList.remove('hidden');
+                }
+            } else {
+                feedbackEl.innerHTML = "<p class='result incorrect'>回答错误，再仔细看看讲解哦！🤔</p>";
+            }
+            feedbackEl.classList.remove('hidden');
+        }
+
+        function revealCodeDraft(areaId, firstLearnId) {
+            const area = document.getElementById(areaId);
+            if (!area) return;
+            area.classList.remove('hidden');
+            if (area.closest('.quest-section')) {
+                area.closest('.quest-section').classList.remove('hidden');
+            }
+            const childContent = area.querySelector('.final-code-container');
+            if(childContent) childContent.classList.remove('hidden');
+            if (firstLearnId) {
+                document.getElementById(firstLearnId).classList.remove('hidden');
+            }
+            const unlockButton = document.querySelector(`button[onclick*="${areaId}"]`);
+            if(unlockButton) unlockButton.classList.add('hidden');
+            area.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function checkCodeDrilldownQuiz(radioName, correctAnswer, feedbackId, draftDisplayId, fragmentKey, nextLearnId, finalCodeContainerId) {
+            const selectedOption = document.querySelector(`input[name="${radioName}"]:checked`);
+            const feedbackEl = document.getElementById(feedbackId);
+            const quizButton = feedbackEl.closest('.quiz-question').querySelector('button');
+            if (!selectedOption) {
+                feedbackEl.innerHTML = "<p class='result incorrect'>请选择一个答案！</p>";
+                feedbackEl.classList.remove('hidden');
+                return;
+            }
+
+            if (selectedOption.value === correctAnswer) {
+                feedbackEl.innerHTML = `<p class='result correct'>理解正确！这段代码的奥秘被你揭开了！👍</p>`;
+                quizButton.disabled = true;
+                masteredFragments[fragmentKey] = true;
+
+                if (nextLearnId) {
+                    setTimeout(() => {
+                        const nextEl = document.getElementById(nextLearnId);
+                        if(nextEl) nextEl.classList.remove('hidden');
+                        nextEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 500);
+                } else {
+                     let allMastered = true;
+                     const prefix = fragmentKey.split('.')[0];
+                     for(const key in masteredFragments) {
+                         if(key.startsWith(prefix) && !masteredFragments[key]) {
+                             allMastered = false;
+                             break;
+                         }
+                     }
+                     if(allMastered && finalCodeContainerId) {
+                         const finalCodeEl = document.getElementById(finalCodeContainerId);
+                         if(finalCodeEl) {
+                            finalCodeEl.classList.remove('hidden');
+                            finalCodeEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                         }
+                     }
+                }
+            } else {
+                feedbackEl.innerHTML = "<p class='result incorrect'>回答错误，再仔细看看代码片段和解释哦！🤔</p>";
+            }
+            feedbackEl.classList.remove('hidden');
+        }
+
+        function copyCodeToClipboard(codeKey, buttonElement) {
+            const codeToCopy = questData.api.codeToCopy[codeKey];
+            navigator.clipboard.writeText(codeToCopy).then(() => {
+                const originalText = buttonElement.textContent;
+                buttonElement.textContent = '复制成功!';
+                buttonElement.style.backgroundColor = '#28a745';
+                setTimeout(() => { 
+                    buttonElement.textContent = originalText;
+                    buttonElement.style.backgroundColor = '#0078d4'; 
+                }, 2000);
+            });
+        }
+        
+        window.onload = function() {
+            initializeMasteryTracker();
+            const questInfo = questData.api;
+            document.getElementById('joke-api-final-code-content').textContent = questInfo.codeToCopy.joke;
+            document.getElementById('weather-api-final-code-content').textContent = questInfo.codeToCopy.weather;
+            document.getElementById('mian-py-final-code-content').textContent = questInfo.codeToCopy.mian;
+            
+            const firstQuestSection = document.querySelector('.quest-section');
+            firstQuestSection.classList.remove('hidden');
+            firstQuestSection.querySelector('.setup-step').classList.remove('hidden');
+        };
+    </script>
+
+</body>
+</html>
