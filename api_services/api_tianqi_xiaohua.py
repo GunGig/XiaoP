@@ -1,4 +1,4 @@
-# XiaoP/api_services/api_handler.py
+# XiaoP/api_services/api_tianqi_xiaohua.py
 
 import requests
 import json
@@ -88,7 +88,7 @@ def get_amap_weather(city_adcode):
 
 # --- 主程序入口和测试区 ---
 if __name__ == '__main__':
-    print("--- 开始测试 api_handler.py 模块 (最终修复版) ---")
+    print("--- 开始测试 api_tianqi_xiaohua.py 模块 (最终修复版) ---")
 
     print("\n[测试] 正在获取北京的天气 (正确编码)...")
     beijing_adcode = "110000"

@@ -40,7 +40,7 @@ except ImportError:
 
 # 新增API模块的导入
 try:
-    import api_services.api_handler
+    import api_services.api_tianqi_xiaohua
 
     api_module_found = True
 except ImportError:
@@ -49,8 +49,7 @@ except ImportError:
 
 # <-- 关键改动 1：导入我们的AI聊天模块 ---
 try:
-    # 假设你已将 deepseek.py 重命名为 ai_chat_handler.py
-    import ai_chat_handler
+    from api_services import ai_chat_handler
 
     ai_chat_module_found = True
 except ImportError:
@@ -154,7 +153,7 @@ while True:
 
     elif ("笑话" in user_input or "搞笑点" in user_input) and api_module_found:  # 注意：笑话功能依赖api_handler
         print(f"小P：好的，准备听我大显身手吧！")
-        joke = api_services.api_handler.get_random_joke()
+        joke = api_services.api_tianqi_xiaohua.get_random_joke()
         print(joke)
         print(f"\n小P：笑话讲完啦！我们继续聊天吧！")
         # 笑话这种单次互动可以不加入历史，以免干扰后续对话
