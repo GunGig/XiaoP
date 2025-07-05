@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a1b5bf9-a335-4706-bc22-f51466b8dfc3" name="更改" comment="06280229">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_6_27_13_46_取消提交了更改_[更改]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai_chat_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_services/ai_chat_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_services/api_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_services/api_tianqi_xiaohua.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mian.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mianAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/mianAI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/xiaoP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/xiaoP.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +70,7 @@
     &quot;Python.任务4封装添加备忘录功能的函数.executor&quot;: &quot;Run&quot;,
     &quot;Python.任务4：用列表收集用户输入的词语.executor&quot;: &quot;Run&quot;,
     &quot;Python.封装函数.executor&quot;: &quot;Run&quot;,
+    &quot;Python.测试语音.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
@@ -107,7 +105,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.mianAI">
-    <configuration name="2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="测试语音" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="xiaoP" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,12 +114,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/api_services" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/api_services/2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/测试语音.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -248,10 +246,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.mianAI" />
+        <item itemvalue="Python.测试语音" />
         <item itemvalue="Python.ai_chat_handler" />
         <item itemvalue="Python.mian" />
         <item itemvalue="Python.deepseek" />
-        <item itemvalue="Python.2" />
       </list>
     </recent_temporary>
   </component>
@@ -286,6 +284,9 @@
       <workItem from="1751368767155" duration="10581000" />
       <workItem from="1751523364035" duration="512000" />
       <workItem from="1751725855516" duration="489000" />
+      <workItem from="1751726646451" duration="672000" />
+      <workItem from="1751740109595" duration="132000" />
+      <workItem from="1751740260794" duration="123000" />
     </task>
     <task id="LOCAL-00001" summary="06051533">
       <option name="closed" value="true" />
@@ -358,9 +359,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/XiaoP$kb_handler.coverage" NAME="kb_handler 覆盖结果" MODIFIED="1751003267316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/local_kb" />
-    <SUITE FILE_PATH="coverage/XiaoP$.coverage" NAME="封装函数 覆盖结果" MODIFIED="1749819764797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/小P是故事大王/练习" />
     <SUITE FILE_PATH="coverage/XiaoP$mian1.coverage" NAME="mian1 覆盖结果" MODIFIED="1751034274046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/XiaoP111$mianAI.coverage" NAME="mianAI 覆盖结果" MODIFIED="1751726053829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/XiaoP$.coverage" NAME="测试语音 覆盖结果" MODIFIED="1751740288333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/XiaoP1$.coverage" NAME="封装函数 覆盖结果" MODIFIED="1749957179445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/小P是故事大王/练习" />
     <SUITE FILE_PATH="coverage/XiaoP$1.coverage" NAME="1 覆盖结果" MODIFIED="1751032652803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
     <SUITE FILE_PATH="coverage/XiaoP1$gushidawang.coverage" NAME="gushidawang 覆盖结果" MODIFIED="1749955469059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/小P是故事大王" />
@@ -375,6 +376,6 @@
     <SUITE FILE_PATH="coverage/XiaoP$deepseek.coverage" NAME="deepseek 覆盖结果" MODIFIED="1751469677085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api_services" />
     <SUITE FILE_PATH="coverage/XiaoP$4.coverage" NAME="任务4封装添加备忘录功能的函数 覆盖结果" MODIFIED="1749144496938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/小P的超级记事本/练习" />
     <SUITE FILE_PATH="coverage/XiaoP1$1f_strings_.coverage" NAME="任务1：f-strings 的更多玩法 覆盖结果" MODIFIED="1749954398383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/小P是故事大王/练习" />
-    <SUITE FILE_PATH="coverage/XiaoP$mianAI.coverage" NAME="mianAI 覆盖结果" MODIFIED="1751471897613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/XiaoP$mianAI.coverage" NAME="mianAI 覆盖结果" MODIFIED="1751740321219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
