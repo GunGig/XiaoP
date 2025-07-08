@@ -4,6 +4,14 @@
 
 import csv
 import random
+from voice_utils.wakeup import wait_for_wakeup
+from voice_utils.speech_recog import voice_input
+from voice_utils.tts import voice_output
+# 设置printPro函数将普通print替换
+def printPro(txt):
+    print(txt)
+    voice_output(txt)
+
 
 # --- 导入我们自己的所有功能模块 ---
 try:
@@ -106,8 +114,8 @@ chat_history = []
 
 # 2. 小P做自我介绍 (更新了欢迎语)
 print("-" * 30)
-print(f"你好！我是{my_ai_name}。很高兴认识你！")
-print("你可以对我说 '你好'，或者问我 '北京天气怎么样'。")
+voice_output(f"你好！我是{my_ai_name}。很高兴认识你！")
+voice_output("你可以对我说 '你好'，或者问我 '北京天气怎么样'。")
 # 动态生成介绍
 if notepad_module_found: print(f"输入 '记事本' 可以使用我的记事本功能。")
 if story_module_found: print(f"输入 '讲故事' 或 '吹牛' 可以听我讲故事。")
@@ -119,7 +127,7 @@ if ai_chat_initialized:
     print("我现在拥有了强大的AI大脑，可以进行更复杂的自由对话了！")
 else:
     print("（提示：我的AI大脑今天好像没连上线，只能进行预设的简单问答。）")
-print(f"输入 '退出' 或 '再见' 就可以结束聊天。")
+voice_output(f"输入 '退出' 或 '再见' 就可以结束聊天。")
 print("-" * 30)
 
 # 4. 准备一些简单的固定回复 (原始代码，保持不变)
@@ -133,7 +141,7 @@ while True:
     user_input = input("\n你：").strip()
 
     if user_input.lower() in ["退出", "再见", "bye", "exit"]:
-        print(f"小P：好的，下次再聊！拜拜！")
+        voice_output(f"小P：好的，下次再聊！拜拜！")
         break
 
     # --- 优先处理所有预设的功能模块 ---
@@ -141,42 +149,42 @@ while True:
     if "天气" in user_input and api_module_found and CITY_ADCODES:
         city_name, adcode = find_city_in_query(user_input, CITY_ADCODES)
         if city_name and adcode:
-            print(f"小P：好的，正在为你查询 {city_name} 的天气...")
+            voice_output(f"小P：好的，正在为你查询 {city_name} 的天气...")
             weather_info = api_services.api_handler.get_amap_weather(adcode)
             response_text = f"播报：{weather_info}"  # <-- 存为变量
-            print(f"小P：{response_text}")
+            voice_output(f"小P：{response_text}")
             # <-- 关键改动 4a：将有效的本地功能问答也加入历史记录 ---
             chat_history.append({"role": "user", "content": user_input})
             chat_history.append({"role": "assistant", "content": response_text})
         else:
-            print("小P：我听到了“天气”，但不太确定你想查询哪个城市呢？你可以试试说“北京天气怎么样”。")
+            voice_output("小P：我听到了“天气”，但不太确定你想查询哪个城市呢？你可以试试说“北京天气怎么样”。")
 
     elif ("笑话" in user_input or "搞笑点" in user_input) and api_module_found:  # 注意：笑话功能依赖api_handler
-        print(f"小P：好的，准备听我大显身手吧！")
+        voice_output(f"小P：好的，准备听我大显身手吧！")
         joke = api_services.api_tianqi_xiaohua.get_random_joke()
-        print(joke)
-        print(f"\n小P：笑话讲完啦！我们继续聊天吧！")
+        voice_output(joke)
+        voice_output(f"\n小P：笑话讲完啦！我们继续聊天吧！")
         # 笑话这种单次互动可以不加入历史，以免干扰后续对话
 
     elif "记事本" in user_input and notepad_module_found:
-        print(f"小P：好的，正在为你打开记事本功能...")
+        voice_output(f"小P：好的，正在为你打开记事本功能...")
         小P的超级记事本.jishiben.run_notepad()
-        print(f"\n小P：记事本已关闭。我们继续聊天吧！")
+        voice_output(f"\n小P：记事本已关闭。我们继续聊天吧！")
 
     elif ("吹牛" in user_input or "讲故事" in user_input) and story_module_found:
-        print(f"小P：好的，准备听我大显身手吧！")
+        voice_output(f"小P：好的，准备听我大显身手吧！")
         gushi.tell_a_story()
-        print(f"\n小P：故事讲完啦！我们继续聊天吧！")
+        voice_output(f"\n小P：故事讲完啦！我们继续聊天吧！")
 
     elif ("随机魔法" in user_input or "魔法" in user_input) and magic_module_found:
-        print(f"小P：好的，准备好见证奇迹了吗？进入随机魔法屋！")
+        voice_output(f"小P：好的，准备好见证奇迹了吗？进入随机魔法屋！")
         random_magic.magic_handler.run_random_magic_menu()
-        print(f"\n小P：魔法时间结束。我们继续聊天吧！")
+        voice_output(f"\n小P：魔法时间结束。我们继续聊天吧！")
 
     elif ("知识库" == user_input.lower() or "教你" in user_input) and kb_module_found:
-        print(f"小P：好的，我们来探索一下我的知识库吧！")
+        voice_output(f"小P：好的，我们来探索一下我的知识库吧！")
         local_kb.kb_handler.run_knowledge_menu()
-        print(f"\n小P：知识库互动结束。还有其他想聊的吗？")
+        voice_output(f"\n小P：知识库互动结束。还有其他想聊的吗？")
 
     # <-- 关键改动 5：修改最终的 else 兜底逻辑 ---
     else:
@@ -186,7 +194,7 @@ while True:
         if kb_module_found:
             kb_answer = local_kb.kb_handler.query_knowledge_base(user_input)
             if kb_answer:
-                print(f"小P：{kb_answer}")
+                voice_output(f"小P：{kb_answer}")
                 chat_history.append({"role": "user", "content": user_input})
                 chat_history.append({"role": "assistant", "content": kb_answer})
                 found_answer = True
@@ -200,7 +208,7 @@ while True:
                 response_text = "你好呀！很高兴认识你！"
 
             if response_text:
-                print(f"小P：{response_text}")
+                voice_output(f"小P：{response_text}")
                 chat_history.append({"role": "user", "content": user_input})
                 chat_history.append({"role": "assistant", "content": response_text})
                 found_answer = True
@@ -214,7 +222,7 @@ while True:
             response_stream = ai_chat_handler.get_ai_response_stream(user_input, chat_history)
 
             for chunk in response_stream:
-                print(chunk, end="", flush=True)
+                voice_output(chunk, end="", flush=True)
                 full_response += chunk
             print()  # 打印完后换行
 
@@ -233,7 +241,7 @@ while True:
                 "你可以试试问我“你会做什么”，或者通过“知识库”功能教我一些新东西哦！",
                 "我对这个还不太了解，能换个话题吗？"
             ]
-            print(f"小P：{random.choice(default_responses)}")
+            voice_output(f"小P：{random.choice(default_responses)}")
 
     # <-- 关键改动 6：管理历史记录长度 ---
     # 在每次循环结束后，检查并修剪历史记录，防止内存占用过大

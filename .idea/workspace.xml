@@ -4,16 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a1b5bf9-a335-4706-bc22-f51466b8dfc3" name="更改" comment="06280229">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1a1b5bf9-a335-4706-bc22-f51466b8dfc3" name="更改" comment="增加了语音交互实践">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/xiaoP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/xiaoP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mian.py" beforeDir="false" afterPath="$PROJECT_DIR$/mian.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mianAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/mianAI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" show_ignored="true" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -97,14 +98,14 @@
       <recent name="H:\Github\XiaoP\小P是故事大王" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Lin\PycharmProjects\XiaoP111\api_services" />
       <recent name="C:\Users\Lin\PycharmProjects\XiaoP" />
+      <recent name="C:\Users\Lin\PycharmProjects\XiaoP111\api_services" />
       <recent name="C:\Users\Lin\PycharmProjects\XiaoP\api_services" />
       <recent name="H:\Github\XiaoP\小P是故事大王" />
       <recent name="H:\Github\XiaoP\小P的超级记事本" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.mianAI">
+  <component name="RunManager" selected="Python.测试语音">
     <configuration name="测试语音" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="xiaoP" />
       <option name="ENV_FILES" value="" />
@@ -245,8 +246,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.mianAI" />
         <item itemvalue="Python.测试语音" />
+        <item itemvalue="Python.mianAI" />
         <item itemvalue="Python.ai_chat_handler" />
         <item itemvalue="Python.mian" />
         <item itemvalue="Python.deepseek" />
@@ -286,7 +287,9 @@
       <workItem from="1751725855516" duration="489000" />
       <workItem from="1751726646451" duration="672000" />
       <workItem from="1751740109595" duration="132000" />
-      <workItem from="1751740260794" duration="123000" />
+      <workItem from="1751740260794" duration="308000" />
+      <workItem from="1751766935988" duration="131000" />
+      <workItem from="1751860490163" duration="4720000" />
     </task>
     <task id="LOCAL-00001" summary="06051533">
       <option name="closed" value="true" />
@@ -320,7 +323,23 @@
       <option name="project" value="LOCAL" />
       <updated>1751049008510</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="增加了语音交互实践">
+      <option name="closed" value="true" />
+      <created>1751740511445</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1751740511445</updated>
+    </task>
+    <task id="LOCAL-00006" summary="增加了语音交互实践">
+      <option name="closed" value="true" />
+      <created>1751766965396</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1751766965396</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,13 +374,14 @@
     <MESSAGE value="06061651" />
     <MESSAGE value="06221139" />
     <MESSAGE value="06280229" />
-    <option name="LAST_COMMIT_MESSAGE" value="06280229" />
+    <MESSAGE value="增加了语音交互实践" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了语音交互实践" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/XiaoP$kb_handler.coverage" NAME="kb_handler 覆盖结果" MODIFIED="1751003267316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/local_kb" />
     <SUITE FILE_PATH="coverage/XiaoP$mian1.coverage" NAME="mian1 覆盖结果" MODIFIED="1751034274046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/XiaoP111$mianAI.coverage" NAME="mianAI 覆盖结果" MODIFIED="1751726053829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/XiaoP$.coverage" NAME="测试语音 覆盖结果" MODIFIED="1751740288333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/XiaoP$.coverage" NAME="测试语音 覆盖结果" MODIFIED="1751868381420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/XiaoP1$.coverage" NAME="封装函数 覆盖结果" MODIFIED="1749957179445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/小P是故事大王/练习" />
     <SUITE FILE_PATH="coverage/XiaoP$1.coverage" NAME="1 覆盖结果" MODIFIED="1751032652803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
     <SUITE FILE_PATH="coverage/XiaoP1$gushidawang.coverage" NAME="gushidawang 覆盖结果" MODIFIED="1749955469059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/小P是故事大王" />
